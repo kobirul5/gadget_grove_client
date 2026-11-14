@@ -68,3 +68,16 @@
 - Added an accessible theme toggle to the global Navbar.
 - Saved explicit theme selections in local storage and made the root layout apply saved or system preference before first paint.
 - Kept the interactive Client Component boundary limited to the toggle and documented the theme behavior.
+
+## 2026-11-14 — Adding visitable authentication page previews
+
+- Replaced the empty login route and added registration, forgot-password, OTP-verification, and reset-password routes.
+- Added shared, responsive authentication card, labeled field, and preview notice components using the global theme tokens.
+- Linked the screens together and kept submit buttons disabled because no authentication API or behavior is implemented.
+- Updated route, component, feature, project, API-integration, and decision documentation.
+
+## 2026-11-14 — Removing implementation-status text from auth screens
+
+- Removed the generic authentication preview notice from all auth pages and deleted its unused shared component.
+- Preserved the disabled submit actions while keeping authentication implementation details out of the customer-facing UI.
+- Updated the component documentation.

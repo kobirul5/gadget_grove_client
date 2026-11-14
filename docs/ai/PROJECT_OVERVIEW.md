@@ -33,10 +33,10 @@ Versions and tools below are taken from `package.json`:
 - A root navigation bar with a Dashboard link and sample navigation labels.
 - A Gadget Grove storefront on the home page following the supplied section sequence: Popular Categories, New Trends, Featured Products, promo banners, Flash Sale, Trending Now, and Top Brand Products.
 - A branded footer rendered globally by the root layout.
-- Route placeholders for login, account, and dashboard.
+- Visit-able login, registration, forgot-password, OTP-verification, and reset-password UI previews, plus account and dashboard placeholders.
 - Global Tailwind theme variables and a reusable button component.
 
-Home page product details are static presentation samples. No working catalog, cart, checkout, account workflow, authentication, admin workflow, or frontend API integration was found in the inspected source.
+Home page product details are static presentation samples. Authentication forms are visual-only previews with disabled submission; no working catalog, cart, checkout, account workflow, authentication, admin workflow, or frontend API integration was found in the inspected source.
 
 ## Project commands
 

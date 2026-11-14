@@ -8,6 +8,13 @@
 | `ThemeToggle` | `src/components/shared/ThemeToggle.tsx` | Accessible light/dark theme toggle used by the Navbar. Applies the corresponding root class and saves the selection in local storage. |
 | `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered globally by the root layout after route content. |
 
+## Authentication components
+
+| Component | Location | Responsibility |
+|---|---|---|
+| `AuthCard` | `src/components/auth/AuthCard.tsx` | Shared responsive, theme-aware card with the Gadget Grove logo, page heading, content, and footer link. |
+| `AuthField` | `src/components/auth/AuthField.tsx` | Accessible labeled input used by authentication page previews. |
+
 ## Home page section components
 
 | Component | Location | Responsibility |

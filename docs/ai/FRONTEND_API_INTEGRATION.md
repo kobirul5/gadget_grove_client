@@ -2,7 +2,7 @@
 
 ## Current status
 
-No frontend API client, fetch/Axios calls, API service module, request hooks, or endpoint definitions were found in the inspected `src/` tree. The login, account, and dashboard files are empty page placeholders; they do not implement authentication or make requests.
+No frontend API client, fetch/Axios calls, API service module, request hooks, or endpoint definitions were found in the inspected `src/` tree. The login, registration, password-recovery, OTP-verification, and password-reset pages are visual previews only; their submit buttons are disabled and they do not implement authentication or make requests.
 
 Consequently, there are no verified endpoints, payloads, response shapes, authentication headers/cookies, or API error conventions to document. Do not invent these details. Backend and database documentation are intentionally out of scope.
 
