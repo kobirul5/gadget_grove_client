@@ -164,3 +164,30 @@ export const brands = [
   "Sony",
   "OnePlus",
 ];
+
+export function getProductSlug(product: Product) {
+  return (
+    product.slug ??
+    product.name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+  );
+}
+
+export const allProducts = Array.from(
+  new Map(
+    [
+      ...newTrends,
+      ...featuredProducts,
+      ...saleProducts,
+      ...trendingProducts,
+      ...brandProducts,
+    ].map((product) => [getProductSlug(product), product]),
+  ).values(),
+);
+
+export function getProductBySlug(slug: string) {
+  return allProducts.find((product) => getProductSlug(product) === slug);
+}

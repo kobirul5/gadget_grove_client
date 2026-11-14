@@ -104,3 +104,11 @@
 - Linked the HP Pavilion sample item from the Featured Products section to its details page.
 - Added local-only gallery, quantity, compare, and cart feedback interactions. Product data, specifications, and actions are not connected to a catalog, cart, or checkout API.
 - Updated component, route, feature-status, and task-log documentation.
+
+## 2026-11-15 — Routing every sample product to shared details
+
+- Replaced the single HP-specific details route with `/products/[slug]`, generating a route for each distinct product in the local storefront sample data.
+- Updated full-size, compact, and trending product cards plus related-product links to open the corresponding details page.
+- Made name, category, image, pricing, discount, generic product information, and related items render from the selected sample product. Kept extra technical details exclusive to the HP sample, where those details already exist.
+- Unknown slugs render not found. No catalog, inventory, compare service, cart persistence, or checkout API was added.
+- Updated routing, component, architecture, feature-status, and task-log documentation.

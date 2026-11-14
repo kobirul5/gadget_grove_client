@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import SectionTitle from "./SectionTitle";
-import { trendingProducts } from "./data";
+import { getProductSlug, trendingProducts } from "./data";
 
 export default function TrendingNowSection() {
   return (
@@ -21,7 +21,7 @@ export default function TrendingNowSection() {
           {trendingProducts.map((product) => (
             <Link
               className="group flex items-center gap-3 overflow-hidden rounded-xl border border-border/80 bg-surface p-2.5 transition-shadow hover:shadow-md sm:gap-4 sm:p-3"
-              href="#top-brand-products"
+              href={`/products/${getProductSlug(product)}`}
               key={product.name}
             >
               <div

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeftRight,
-  Check,
   ChevronDown,
   Heart,
   Minus,
@@ -16,13 +15,13 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { featuredProducts, newTrends } from "@/components/home/data";
+import {
+  allProducts,
+  getProductSlug,
+  type Product,
+} from "@/components/home/data";
 
-const productImages = [
-  {
-    src: featuredProducts[3].image,
-    alt: "HP Pavilion 16 laptop, front view",
-  },
+const hpAdditionalImages = [
   {
     src: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=85",
     alt: "HP Pavilion laptop, angled view",
@@ -37,7 +36,12 @@ const productImages = [
   },
 ];
 
-const specificationGroups = [
+type SpecificationGroup = {
+  title: string;
+  rows: [string, string][];
+};
+
+const hpSpecificationGroups: SpecificationGroup[] = [
   {
     title: "Main Features",
     rows: [
@@ -146,28 +150,34 @@ const specificationGroups = [
   },
 ];
 
-const relatedProducts = [
-  {
-    name: "Galaxy S Series",
-    price: "৳ 89,900",
-    image: newTrends[2].image,
-  },
-  {
-    name: "Studio Wireless Headphones",
-    price: "৳ 18,900",
-    image: newTrends[3].image,
-  },
-  {
-    name: "Classic Smart Watch",
-    price: "৳ 14,500",
-    image: newTrends[4].image,
-  },
-];
+type ProductTab = "Specification" | "Description" | "Warranty";
 
-const tabs = ["Specification", "Description", "Warranty"] as const;
-type ProductTab = (typeof tabs)[number];
-
-export default function ProductDetailPage() {
+export default function ProductDetailPage({ product }: { product: Product }) {
+  const isHpPavilion = getProductSlug(product) === "hp-pavilion-16";
+  const productImages = [
+    { src: product.image, alt: product.name },
+    ...(isHpPavilion ? hpAdditionalImages : []),
+  ];
+  const specificationGroups = isHpPavilion
+    ? hpSpecificationGroups
+    : [
+        {
+          title: "Product Information",
+          rows: [
+            ["Category", product.category],
+            ["Current Price", product.price],
+            ["Previous Price", product.oldPrice],
+          ] as [string, string][],
+        },
+      ];
+  const tabs: ProductTab[] = isHpPavilion
+    ? ["Specification", "Description", "Warranty"]
+    : ["Specification", "Description"];
+  const otherProducts = allProducts.filter(
+    (item) => getProductSlug(item) !== getProductSlug(product),
+  );
+  const relatedProducts = otherProducts.slice(0, 3);
+  const moreProducts = otherProducts.slice(3, 6);
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState<ProductTab>("Specification");
   const [quantity, setQuantity] = useState(1);
@@ -177,6 +187,10 @@ export default function ProductDetailPage() {
   function addToCart() {
     setCartQuantity((currentQuantity) => currentQuantity + quantity);
   }
+
+  const discount =
+    Number(product.oldPrice.replace(/\D/g, "")) -
+    Number(product.price.replace(/\D/g, ""));
 
   return (
     <main className="flex-1 bg-background-soft">
@@ -191,12 +205,12 @@ export default function ProductDetailPage() {
             <li aria-hidden="true">/</li>
             <li>
               <Link className="hover:text-primary" href="/#popular-categories">
-                Computers
+                {product.category}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li aria-current="page" className="font-medium text-text-primary">
-              HP Pavilion 16
+              {product.name}
             </li>
           </ol>
         </nav>
@@ -220,41 +234,42 @@ export default function ProductDetailPage() {
                 {selectedImage + 1} / {productImages.length}
               </span>
             </div>
-            <div
-              aria-label="Product images"
-              className="mt-3 grid grid-cols-4 gap-2 sm:mt-4 sm:gap-3"
-            >
-              {productImages.map((image, index) => (
-                <button
-                  aria-label={`Show product image ${index + 1}`}
-                  aria-pressed={selectedImage === index}
-                  className={`relative aspect-square overflow-hidden rounded-lg border bg-surface p-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:p-2 ${
-                    selectedImage === index
-                      ? "border-primary"
-                      : "border-border hover:border-primary/50"
-                  }`}
-                  key={image.src}
-                  onClick={() => setSelectedImage(index)}
-                  type="button"
-                >
-                  <Image
-                    alt=""
-                    className="object-contain"
-                    fill
-                    sizes="(max-width: 640px) 22vw, 100px"
-                    src={image.src}
-                    unoptimized
-                  />
-                </button>
-              ))}
-            </div>
+            {productImages.length > 1 ? (
+              <div
+                aria-label="Product images"
+                className="mt-3 grid grid-cols-4 gap-2 sm:mt-4 sm:gap-3"
+              >
+                {productImages.map((image, index) => (
+                  <button
+                    aria-label={`Show product image ${index + 1}`}
+                    aria-pressed={selectedImage === index}
+                    className={`relative aspect-square overflow-hidden rounded-lg border bg-surface p-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:p-2 ${
+                      selectedImage === index
+                        ? "border-primary"
+                        : "border-border hover:border-primary/50"
+                    }`}
+                    key={image.src}
+                    onClick={() => setSelectedImage(index)}
+                    type="button"
+                  >
+                    <Image
+                      alt=""
+                      className="object-contain"
+                      fill
+                      sizes="(max-width: 640px) 22vw, 100px"
+                      src={image.src}
+                      unoptimized
+                    />
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
 
           <div className="flex flex-col">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
-                <Check aria-hidden="true" className="size-3.5" />
-                In stock
+              <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+                {product.category}
               </span>
               <button
                 aria-pressed={isCompared}
@@ -268,26 +283,31 @@ export default function ProductDetailPage() {
             </div>
 
             <p className="text-xs font-medium tracking-wide text-primary uppercase">
-              HP · Pavilion Series
+              Gadget Grove selection
             </p>
             <h1
               className="mt-2 text-2xl leading-tight font-semibold tracking-tight text-text-primary sm:text-3xl"
               id="product-title"
             >
-              HP Pavilion 16 Ryzen 7 8GB RAM 512GB SSD 16&quot; Laptop
+              {product.name}
             </h1>
 
             <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1">
-              <span className="text-2xl font-bold text-primary">৳79,999</span>
+              <span className="text-2xl font-bold text-primary">
+                {product.price}
+              </span>
               <span className="text-sm text-text-secondary line-through">
-                ৳89,999
+                {product.oldPrice}
               </span>
-              <span className="rounded-full bg-success/10 px-2.5 py-1 text-xs font-semibold text-success">
-                Save ৳10,000
-              </span>
+              {discount > 0 ? (
+                <span className="rounded-full bg-success/10 px-2.5 py-1 text-xs font-semibold text-success">
+                  Save ৳{discount.toLocaleString("en-BD")}
+                </span>
+              ) : null}
             </div>
 
-            <div className="mt-3 flex items-center gap-2 text-sm text-text-secondary">
+            {isHpPavilion ? (
+              <div className="mt-3 flex items-center gap-2 text-sm text-text-secondary">
               <span aria-label="Rated 4.8 out of 5" className="flex text-warning">
                 {Array.from({ length: 5 }, (_, index) => (
                   <Star
@@ -302,9 +322,11 @@ export default function ProductDetailPage() {
               <a className="hover:text-primary" href="#product-reviews">
                 24 reviews
               </a>
-            </div>
+              </div>
+            ) : null}
 
-            <ul className="mt-6 space-y-3 border-y border-border py-5 text-sm text-text-secondary">
+            {isHpPavilion ? (
+              <ul className="mt-6 space-y-3 border-y border-border py-5 text-sm text-text-secondary">
               <li className="flex gap-2.5">
                 <span aria-hidden="true" className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />
                 Processor: AMD Ryzen 7 8840U, up to 5.1 GHz
@@ -325,7 +347,12 @@ export default function ProductDetailPage() {
                 <span aria-hidden="true" className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />
                 Warranty: 1 year parts and 2 years service
               </li>
-            </ul>
+              </ul>
+            ) : (
+              <p className="mt-6 border-y border-border py-5 text-sm text-text-secondary">
+                Explore this item from our {product.category} collection.
+              </p>
+            )}
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <span className="text-sm font-medium text-text-primary">
@@ -359,7 +386,7 @@ export default function ProductDetailPage() {
               <span className="text-xs text-text-secondary">
                 {cartQuantity > 0
                   ? `${cartQuantity} ${cartQuantity === 1 ? "item" : "items"} added`
-                  : "Available for delivery"}
+                  : "Select quantity"}
               </span>
             </div>
 
@@ -398,7 +425,7 @@ export default function ProductDetailPage() {
               </div>
               <div className="flex flex-col items-center gap-2 text-center text-[11px] text-text-secondary sm:flex-row sm:text-left">
                 <Heart aria-hidden="true" className="size-5 shrink-0 text-primary" />
-                <span>Warranty included</span>
+                <span>{isHpPavilion ? "Warranty included" : "Here to help"}</span>
               </div>
             </div>
           </div>
@@ -471,7 +498,8 @@ export default function ProductDetailPage() {
               ) : null}
 
               {activeTab === "Description" ? (
-                <div className="space-y-4 text-sm leading-7 text-text-secondary">
+                isHpPavilion ? (
+                  <div className="space-y-4 text-sm leading-7 text-text-secondary">
                   <h2 className="text-lg font-semibold text-text-primary">
                     A little more room for everything
                   </h2>
@@ -488,7 +516,19 @@ export default function ProductDetailPage() {
                     and USB-C connectivity keep the details practical from
                     morning to evening.
                   </p>
-                </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4 text-sm leading-7 text-text-secondary">
+                    <h2 className="text-lg font-semibold text-text-primary">
+                      {product.name}
+                    </h2>
+                    <p>
+                      This item is part of our {product.category} collection.
+                      The available listing includes the product image and
+                      pricing shown above.
+                    </p>
+                  </div>
+                )
               ) : null}
 
               {activeTab === "Warranty" ? (
@@ -514,11 +554,12 @@ export default function ProductDetailPage() {
               heading="Related Products"
               products={relatedProducts}
             />
-            <ProductSideList
-              heading="Recently Viewed Products"
-              products={relatedProducts}
-              showAvailability
-            />
+            {moreProducts.length > 0 ? (
+              <ProductSideList
+                heading="More to explore"
+                products={moreProducts}
+              />
+            ) : null}
           </aside>
         </section>
 
@@ -533,11 +574,9 @@ export default function ProductDetailPage() {
 function ProductSideList({
   heading,
   products,
-  showAvailability = false,
 }: {
   heading: string;
-  products: { name: string; price: string; image: string }[];
-  showAvailability?: boolean;
+  products: Product[];
 }) {
   return (
     <section
@@ -551,34 +590,32 @@ function ProductSideList({
             className="flex items-center gap-3 rounded-lg border border-border/70 p-2.5"
             key={product.name}
           >
-            <div className="relative size-12 shrink-0 overflow-hidden rounded-md bg-surface-secondary">
-              <Image
-                alt=""
-                className="object-contain p-1"
-                fill
-                sizes="48px"
-                src={product.image}
-                unoptimized
-              />
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-xs font-medium text-text-primary">
-                {product.name}
-              </p>
-              <p className="mt-1 text-xs font-semibold text-primary">
-                {product.price}
-              </p>
-            </div>
-            <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border px-2 py-1 text-[10px] text-text-secondary">
-              {showAvailability ? (
-                <>
-                  <Check aria-hidden="true" className="size-3 text-success" />
-                  Available
-                </>
-              ) : (
-                "Free delivery"
-              )}
-            </span>
+            <Link
+              className="flex min-w-0 flex-1 items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              href={`/products/${getProductSlug(product)}`}
+            >
+              <div className="relative size-12 shrink-0 overflow-hidden rounded-md bg-surface-secondary">
+                <Image
+                  alt=""
+                  className="object-contain p-1"
+                  fill
+                  sizes="48px"
+                  src={product.image}
+                  unoptimized
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-xs font-medium text-text-primary">
+                  {product.name}
+                </p>
+                <p className="mt-1 text-xs font-semibold text-primary">
+                  {product.price}
+                </p>
+              </div>
+              <span className="shrink-0 rounded-full border border-border px-2 py-1 text-[10px] text-text-secondary">
+                {product.category}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

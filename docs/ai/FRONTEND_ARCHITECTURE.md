@@ -8,6 +8,7 @@ The frontend is in `src/` and uses the App Router:
 - Route groups `(auth)`, `(user)`, and `(admin)` organize pages without adding those group names to their URLs.
 - `src/components/shared/` contains shared page chrome.
 - `src/components/home/` contains the home page's individual section components and shared static sample data.
+- `src/components/products/` contains the reusable product details page, whose slug lookup and generated routes use the local sample catalog in `src/components/home/data.ts`.
 - `src/components/ui/` contains reusable UI primitives.
 - `src/lib/` contains shared utilities.
 

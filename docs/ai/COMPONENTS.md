@@ -28,13 +28,13 @@
 | `FlashSaleSection` | `src/components/home/FlashSaleSection.tsx` | Static sale product cards. |
 | `TrendingNowSection` | `src/components/home/TrendingNowSection.tsx` | Horizontal trending-product rows. |
 | `TopBrandProductsSection` | `src/components/home/TopBrandProductsSection.tsx` | Brand labels and featured product cards. |
-| `ProductDetailPage` | `src/components/products/ProductDetailPage.tsx` | Responsive, theme-aware sample laptop details page with image gallery, quantity and compare controls, product tabs, specifications, and related-product panels. Add-to-cart feedback is local UI state only; no cart or checkout service is connected. |
+| `ProductDetailPage` | `src/components/products/ProductDetailPage.tsx` | Reusable responsive details template driven by a `Product` prop. Shows the selected item's name, category, price, image, and related-product links; the HP Pavilion sample has additional images and specs. Quantity, compare, tabs, and cart feedback are local UI state only. |
 
 `src/app/page.tsx` composes these sections. Shared home UI and static data:
 
 - `src/components/home/SectionTitle.tsx` renders a reusable section heading and optional link.
 - `src/components/home/ProductCard.tsx` renders compact and full product cards.
-- `src/components/home/data.ts` provides static category, brand, and sample product data.
+- `src/components/home/data.ts` provides static category, brand, and sample product data plus slug generation and the deduplicated `allProducts` lookup used by the details route.
 
 ## UI primitives
 
