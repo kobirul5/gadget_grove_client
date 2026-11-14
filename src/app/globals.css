@@ -32,6 +32,7 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
@@ -73,6 +74,7 @@
   --text-secondary: #64748b;
   --border: #e2e8f0;
   --footer: #142238;
+  --footer-foreground: #f1f5f9;
   --success: #15803d;
   --warning: #d97706;
   --error: #dc2626;
@@ -120,6 +122,7 @@
   --text-secondary: #a0aec0;
   --border: #293849;
   --footer: #080e19;
+  --footer-foreground: #f1f5f9;
   --success: #4ade80;
   --warning: #fbbf24;
   --error: #f87171;
@@ -167,6 +170,7 @@
     --text-secondary: #a0aec0;
     --border: #293849;
     --footer: #080e19;
+    --footer-foreground: #f1f5f9;
     --success: #4ade80;
     --warning: #fbbf24;
     --error: #f87171;

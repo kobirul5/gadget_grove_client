@@ -7,6 +7,7 @@ The frontend is in `src/` and uses the App Router:
 - `src/app/` contains the root layout, global styles, and route segments.
 - Route groups `(auth)`, `(user)`, and `(admin)` organize pages without adding those group names to their URLs.
 - `src/components/shared/` contains shared page chrome.
+- `src/components/home/` contains the home page's individual section components and shared static sample data.
 - `src/components/ui/` contains reusable UI primitives.
 - `src/lib/` contains shared utilities.
 
@@ -14,7 +15,9 @@ No nested route-group layouts, route handlers, middleware, context providers, or
 
 ## Layout and rendering
 
-`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and renders `Navbar` around every route's children. It does not render the existing `Footer`.
+`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and renders the shared `Navbar`, route children, and shared `Footer` in that order. The Footer is global and appears on every route.
+
+The root `src/app/page.tsx` composes the home-page section components in display order. Section markup is kept under `src/components/home/`; static sample product and category content is centralized in `src/components/home/data.ts`.
 
 The pages and components inspected do not declare `"use client"`, so they use the App Router's default Server Component behavior. Keep components server-rendered unless interactivity or browser-only APIs require a Client Component.
 

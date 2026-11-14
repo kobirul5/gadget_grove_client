@@ -70,7 +70,7 @@ The stylesheet uses Tailwind CSS 4's CSS-first theme and shadcn semantic variabl
 
 Tailwind roles such as `bg-primary`, `bg-background-soft`, `text-text-secondary`, and `bg-success` resolve to the CSS custom properties. Existing shadcn roles (`--primary`, `--background`, `--card`, `--foreground`, and related variables) are mapped to the approved values to preserve compatibility. Keep one authoritative value per role.
 
-Theme roles are defined for primary, primary hover, secondary, accent, background, soft background, surface, secondary surface, primary and secondary text, border, footer, and success/warning/error/information. Foreground pairings are explicit, including a dark foreground on the brighter dark-theme primary, secondary, and accent colors.
+Theme roles are defined for primary, primary hover, secondary, accent, background, soft background, surface, secondary surface, primary and secondary text, border, footer and its light foreground, and success/warning/error/information. Foreground pairings are explicit, including a dark foreground on the brighter dark-theme primary, secondary, and accent colors.
 
 The root declares `color-scheme: light`, `.dark` declares `color-scheme: dark`, and the existing system-preference fallback applies the same dark tokens only when neither `.light` nor `.dark` is explicitly selected.
 

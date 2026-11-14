@@ -2,7 +2,7 @@
 
 ## Purpose and current state
 
-Gadget Grove is the intended e-commerce website, with customer-facing and admin experiences in one Next.js frontend. The checked-in UI is currently an early starter rather than a functioning storefront: the home page still contains the default Next.js starter content, and the login, account, and dashboard pages are placeholders.
+Gadget Grove is an e-commerce website with customer-facing and admin experiences in one Next.js frontend. The home page presents a static storefront design; login, account, and dashboard pages remain placeholders.
 
 This documentation covers frontend code only. It does not describe backend services, databases, or server implementation.
 
@@ -23,7 +23,7 @@ Versions and tools below are taken from `package.json`:
 
 - The project uses the `src/` directory and the Next.js App Router.
 - Route files, the root layout, and global styles are under `src/app/`.
-- Shared UI lives in `src/components/`; the `ui/` subdirectory currently contains a button.
+- Shared UI lives in `src/components/`; `shared/` contains the Navbar and Footer, `home/` contains individual storefront sections and sample data, and `ui/` contains a button.
 - `src/lib/utils.ts` re-exports the `cn` utility.
 - The TypeScript alias `@/*` resolves to `src/*`.
 - The admin route is in the same application and inherits the root layout.
@@ -31,11 +31,12 @@ Versions and tools below are taken from `package.json`:
 ## Features visible in the current frontend
 
 - A root navigation bar with a Dashboard link and sample navigation labels.
-- A default Next.js starter home page.
+- A Gadget Grove storefront on the home page following the supplied section sequence: Popular Categories, New Trends, Featured Products, promo banners, Flash Sale, Trending Now, and Top Brand Products.
+- A branded footer rendered globally by the root layout.
 - Route placeholders for login, account, and dashboard.
 - Global Tailwind theme variables and a reusable button component.
 
-No working catalog, cart, checkout, account workflow, authentication, admin workflow, or frontend API integration was found in the inspected source.
+Home page product details are static presentation samples. No working catalog, cart, checkout, account workflow, authentication, admin workflow, or frontend API integration was found in the inspected source.
 
 ## Project commands
 
