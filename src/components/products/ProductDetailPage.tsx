@@ -211,7 +211,7 @@ export default function ProductDetailPage() {
                 alt={productImages[selectedImage].alt}
                 className="object-contain p-5 sm:p-8"
                 fill
-                priority
+                loading="eager"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 src={productImages[selectedImage].src}
                 unoptimized
@@ -406,7 +406,7 @@ export default function ProductDetailPage() {
 
         <section
           aria-label="Product information"
-          className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10"
+          className="mt-8 grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10"
         >
           <div className="min-w-0">
             <div

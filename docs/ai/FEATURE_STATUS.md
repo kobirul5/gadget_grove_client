@@ -11,12 +11,14 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Reusable Base UI-backed button.
 - Tailwind CSS theme variables and global light/dark palette tokens.
 - Responsive Gadget Grove storefront structured around the supplied home-page reference, with hero, service strip, category icons, static product collections, promotional banners, flash-sale cards, trending list, and brand product section.
+- A responsive sample HP Pavilion 16 details page at `/products/hp-pavilion-16`, linked from its featured-product card. Gallery, specification/description/warranty tabs, quantity, compare selection, and cart feedback are frontend-only interactions.
 - Home page sections implemented as separate components under `src/components/home/`.
 - Branded global footer with links to existing frontend routes and home-page sections.
 
 ## Starter content / placeholders
 
 - Home page product names, prices, ratings, counts, and service claims are static presentation samples and are not backed by a product API.
+- The product details page content, product imagery, specifications, ratings, related-product listings, and cart state are static or local UI samples, not backed by a catalog or cart API.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
 - `/account` and `/dashboard` render `null`.
 - `/dashboard` is a placeholder route and is not linked from the storefront navigation.
