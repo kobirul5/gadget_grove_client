@@ -564,7 +564,7 @@ export default function ProductDetailPage({ product }: { product: Product }) {
         </section>
 
         <div className="sr-only" id="product-reviews">
-          Customer reviews for the HP Pavilion 16.
+          Customer reviews for {product.name}.
         </div>
       </div>
     </main>

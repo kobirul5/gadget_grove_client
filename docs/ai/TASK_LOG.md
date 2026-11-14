@@ -112,3 +112,11 @@
 - Made name, category, image, pricing, discount, generic product information, and related items render from the selected sample product. Kept extra technical details exclusive to the HP sample, where those details already exist.
 - Unknown slugs render not found. No catalog, inventory, compare service, cart persistence, or checkout API was added.
 - Updated routing, component, architecture, feature-status, and task-log documentation.
+
+## 2026-11-15 — Adding search, cart, and favorites to Navbar
+
+- Added a responsive product-search field to the shared Navbar. Suggestions and Enter navigation use the local sample catalog and open the matching product details route.
+- Added accessible cart and favorites icon buttons with empty-state panels, retaining the existing theme toggle, Sign in link, and storefront navigation.
+- Kept cart and favorites as frontend-only UI; they are not connected to the product details demo state or a backend.
+- Wrapped product-route URL parameter access in Suspense with a loading fallback after verifying Navbar search navigation against the current Next.js runtime.
+- Updated component and feature-status documentation.

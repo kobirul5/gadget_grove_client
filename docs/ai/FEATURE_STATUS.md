@@ -6,6 +6,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 - Next.js App Router application with root layout and global styles.
 - Responsive Gadget Grove navigation with storefront section links, a Sign in link, theme-token colors, and Geist fonts.
+- Navbar product search with local-catalog suggestions and accessible cart/favorites empty-state panels.
 - Accessible Navbar light/dark theme toggle with saved preference and system-theme default.
 - Visitable authentication screens at `/login`, `/register`, `/forgot-password`, `/verify-otp`, and `/reset-password`; registration and recovery screens support browser-side validation and client-side demo navigation.
 - Reusable Base UI-backed button.
@@ -19,6 +20,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 - Home page product names, prices, ratings, counts, and service claims are static presentation samples and are not backed by a product API.
 - Product imagery, specifications, ratings, related-product listings, and cart state are static or local UI samples, not backed by a catalog or cart API.
+- Navbar cart and favorites panels are UI-only empty states and do not share or persist product details-page cart/compare state.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
 - `/account` and `/dashboard` render `null`.
 - `/dashboard` is a placeholder route and is not linked from the storefront navigation.
