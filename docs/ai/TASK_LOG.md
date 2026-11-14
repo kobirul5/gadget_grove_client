@@ -81,3 +81,11 @@
 - Removed the generic authentication preview notice from all auth pages and deleted its unused shared component.
 - Preserved the disabled submit actions while keeping authentication implementation details out of the customer-facing UI.
 - Updated the component documentation.
+
+## 2026-11-14 — Refining the authentication experience
+
+- Replaced the centered generic auth card with a branded split layout and a small product-category visual panel on larger screens.
+- Improved the authentication page copy to sound more natural and removed preview-oriented labels from the visitor-facing flow.
+- Kept a compact single-column layout on small screens and reused the approved theme tokens.
+- Kept contrast readable on the dark brand panel and served the existing logo asset directly in the auth layout.
+- Updated the shared component documentation.

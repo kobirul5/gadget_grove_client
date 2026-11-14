@@ -6,7 +6,7 @@ import AuthField from "@/components/auth/AuthField";
 export default function ResetPasswordPage() {
   return (
     <AuthCard
-      description="Choose a new password for your Gadget Grove account."
+      description="Pick a new password and you&apos;ll be all set."
       footer={
         <>
           Changed your mind?{" "}

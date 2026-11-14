@@ -12,7 +12,7 @@
 
 | Component | Location | Responsibility |
 |---|---|---|
-| `AuthCard` | `src/components/auth/AuthCard.tsx` | Shared responsive, theme-aware card with the Gadget Grove logo, page heading, content, and footer link. |
+| `AuthCard` | `src/components/auth/AuthCard.tsx` | Shared responsive, theme-aware split layout for auth screens, with a readable branded product/category panel, page heading, content, and footer link. |
 | `AuthField` | `src/components/auth/AuthField.tsx` | Accessible labeled input used by authentication page previews. |
 
 ## Home page section components

@@ -106,6 +106,7 @@ The root declares `color-scheme: light`, `.dark` declares `color-scheme: dark`, 
 - Focus uses the primary token.
 - Validation errors use the error token; success and warning feedback use their own semantic tokens.
 - Provide readable labels, accessible names, and non-color status cues.
+- Authentication screens use a responsive branded split layout on larger viewports and a simple single-column form on smaller screens.
 
 ### Footer
 

@@ -6,7 +6,7 @@ import AuthField from "@/components/auth/AuthField";
 export default function RegisterPage() {
   return (
     <AuthCard
-      description="Create an account to make your next tech find even easier."
+      description="Set up your account and make yourself at home."
       footer={
         <>
           Already have an account?{" "}
@@ -45,9 +45,9 @@ export default function RegisterPage() {
           Create account
         </Button>
         <p className="text-center text-sm text-text-secondary">
-          Want to preview email verification?{" "}
+          Once you&apos;re signed up, you can verify your email.{" "}
           <Link className="font-medium text-primary hover:underline" href="/verify-otp">
-            View verification
+            Verify email
           </Link>
         </p>
       </form>

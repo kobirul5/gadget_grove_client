@@ -6,7 +6,7 @@ import AuthField from "@/components/auth/AuthField";
 export default function VerifyOtpPage() {
   return (
     <AuthCard
-      description="Enter the 6-digit verification code sent to your email address."
+      description="We sent a 6-digit code to your email. Pop it in below to continue."
       footer={
         <>
           Wrong email?{" "}
@@ -34,12 +34,12 @@ export default function VerifyOtpPage() {
           Verify code
         </Button>
         <div className="text-center text-sm text-text-secondary">
-          Forgot password?{" "}
+          Resetting your password?{" "}
           <Link
             className="font-medium text-primary hover:underline"
             href="/reset-password"
           >
-            Preview reset password
+            Choose a new password
           </Link>
         </div>
       </form>

@@ -6,7 +6,7 @@ import AuthField from "@/components/auth/AuthField";
 export default function ForgotPasswordPage() {
   return (
     <AuthCard
-      description="Enter the email address linked to your account. We’ll send a code to verify it."
+      description="It happens. Enter your email and we&apos;ll help you get back in."
       footer={
         <>
           Remember your password?{" "}
@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
           className="block text-center text-sm font-medium text-primary hover:underline"
           href="/verify-otp"
         >
-          Preview the verification code page
+          Already have a code? Enter it here
         </Link>
       </form>
     </AuthCard>
