@@ -28,6 +28,7 @@
 | `FlashSaleSection` | `src/components/home/FlashSaleSection.tsx` | Static sale product cards. |
 | `TrendingNowSection` | `src/components/home/TrendingNowSection.tsx` | Horizontal trending-product rows. |
 | `TopBrandProductsSection` | `src/components/home/TopBrandProductsSection.tsx` | Brand labels and featured product cards. |
+| `ProductDetailPage` | `src/components/products/ProductDetailPage.tsx` | Responsive, theme-aware sample laptop details page with image gallery, quantity and compare controls, product tabs, specifications, and related-product panels. Add-to-cart feedback is local UI state only; no cart or checkout service is connected. |
 
 `src/app/page.tsx` composes these sections. Shared home UI and static data:
 

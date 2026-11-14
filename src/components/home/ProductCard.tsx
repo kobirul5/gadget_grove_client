@@ -48,7 +48,11 @@ export default function ProductCard({
         {!compact && (
           <Link
             className="mt-3 inline-flex w-full items-center justify-center rounded-lg border border-primary/40 px-2 py-2 text-[11px] font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            href="#featured-products"
+            href={
+              product.slug
+                ? `/products/${product.slug}`
+                : "#featured-products"
+            }
           >
             View product
           </Link>

@@ -14,6 +14,7 @@ export type Product = {
   price: string;
   oldPrice: string;
   image: string;
+  slug?: string;
   label?: string;
 };
 
@@ -85,12 +86,13 @@ export const featuredProducts: Product[] = [
   newTrends[3],
   newTrends[1],
   {
-    name: "Everyday Ultrabook",
+    name: "HP Pavilion 16 Ryzen 7 Laptop",
     category: "Computers",
-    price: "৳ 112,000",
-    oldPrice: "৳ 124,000",
+    price: "৳ 79,999",
+    oldPrice: "৳ 89,999",
     image:
       "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85",
+    slug: "hp-pavilion-16",
   },
 ];
 

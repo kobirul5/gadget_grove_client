@@ -5,6 +5,7 @@ The application uses the Next.js App Router. Parenthesized route groups organize
 | URL | Page file | Current responsibility/state |
 |---|---|---|
 | `/` | `src/app/page.tsx` | Composes the home section components in reference order: hero and service strip, `Popular Categories`, `New Trends`, `Featured Products`, collection banners, `Flash Sale`, `Trending Now`, and `Top Brand Products`. Product content is UI sample data; no catalog API is connected. |
+| `/products/hp-pavilion-16` | `src/app/products/hp-pavilion-16/page.tsx` | Sample HP Pavilion 16 laptop details page, linked from its featured-product card. Includes image gallery, product specifications, description, warranty, and related-product panels. Product data and cart feedback are client-side samples; no catalog, cart, or checkout API is connected. |
 | `/login` | `src/app/(auth)/login/page.tsx` | Sign-in form preview with links to registration and password recovery; authentication submission is not connected. |
 | `/register` | `src/app/(auth)/register/page.tsx` | Registration form navigates to `/verify-otp` with the entered email after browser validation. |
 | `/forgot-password` | `src/app/(auth)/forgot-password/page.tsx` | Recovery form navigates to `/verify-otp` with the entered email and password-reset flow. |
