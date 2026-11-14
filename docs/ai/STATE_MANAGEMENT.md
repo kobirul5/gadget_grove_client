@@ -2,7 +2,7 @@
 
 ## Current implementation
 
-No state-management library, React context/provider, custom hook, or shared React client state was found in `src/`. The shared `ThemeToggle` is a small Client Component that updates the root theme class and stores the explicit user preference in `localStorage`; the root layout applies that preference before paint and otherwise follows the system color preference.
+No state-management library, React context/provider, custom hook, or shared React client state was found in `src/`. The shared `ThemeToggle` is a small Client Component that updates the root theme class and stores the explicit user preference in `localStorage`; the root layout applies that preference before paint and otherwise follows the system color preference. Authentication forms use local Client Component handlers for browser validation and demo navigation between screens; they do not store credentials or create authenticated state.
 
 No data-fetching hooks, query/cache library usage, or request calls were found in `src/`.
 

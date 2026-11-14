@@ -14,6 +14,7 @@
 |---|---|---|
 | `AuthCard` | `src/components/auth/AuthCard.tsx` | Shared responsive, theme-aware split layout for auth screens, with a readable branded product/category panel, page heading, content, and footer link. |
 | `AuthField` | `src/components/auth/AuthField.tsx` | Accessible labeled input used by authentication page previews. |
+| `RegisterForm`, `ForgotPasswordForm`, `VerifyOtpForm`, `VerifyOtpPageContent`, `ResetPasswordForm` | `src/components/auth/` | Client-side form validation and demo navigation through registration and recovery steps; OTP page query state is read inside a Suspense boundary. No credentials or verification state are persisted. |
 
 ## Home page section components
 

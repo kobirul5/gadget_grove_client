@@ -2,7 +2,7 @@
 
 ## Current status
 
-No frontend API client, fetch/Axios calls, API service module, request hooks, or endpoint definitions were found in the inspected `src/` tree. The login, registration, password-recovery, OTP-verification, and password-reset pages are visual previews only; their submit buttons are disabled and they do not implement authentication or make requests.
+No frontend API client, fetch/Axios calls, API service module, request hooks, or endpoint definitions were found in the inspected `src/` tree. Registration, recovery, OTP, and reset forms provide browser-side validation and client-side demo navigation only. They do not create accounts, send email, verify OTPs, update passwords, or make requests. The login submit remains disabled.
 
 Consequently, there are no verified endpoints, payloads, response shapes, authentication headers/cookies, or API error conventions to document. Do not invent these details. Backend and database documentation are intentionally out of scope.
 

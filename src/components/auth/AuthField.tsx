@@ -1,3 +1,5 @@
+import type { FormEventHandler } from "react";
+
 type AuthFieldProps = {
   id: string;
   label: string;
@@ -8,6 +10,8 @@ type AuthFieldProps = {
   required?: boolean;
   inputMode?: "numeric" | "text" | "email";
   maxLength?: number;
+  pattern?: string;
+  onInput?: FormEventHandler<HTMLInputElement>;
 };
 
 export default function AuthField({
@@ -20,6 +24,8 @@ export default function AuthField({
   required = true,
   inputMode,
   maxLength,
+  pattern,
+  onInput,
 }: AuthFieldProps) {
   return (
     <div className="space-y-2">
@@ -33,6 +39,8 @@ export default function AuthField({
         inputMode={inputMode}
         maxLength={maxLength}
         name={name}
+        onInput={onInput}
+        pattern={pattern}
         placeholder={placeholder}
         required={required}
         type={type}

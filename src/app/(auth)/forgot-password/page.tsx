@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import AuthCard from "@/components/auth/AuthCard";
-import AuthField from "@/components/auth/AuthField";
+import ForgotPasswordForm from "@/components/auth/ForgotPasswordForm";
 
 export default function ForgotPasswordPage() {
   return (
@@ -17,25 +16,7 @@ export default function ForgotPasswordPage() {
       }
       title="Forgot password?"
     >
-      <form className="space-y-5">
-        <AuthField
-          autoComplete="email"
-          id="forgot-email"
-          label="Email address"
-          name="email"
-          placeholder="you@example.com"
-          type="email"
-        />
-        <Button className="h-11 w-full" disabled type="submit">
-          Send verification code
-        </Button>
-        <Link
-          className="block text-center text-sm font-medium text-primary hover:underline"
-          href="/verify-otp"
-        >
-          Already have a code? Enter it here
-        </Link>
-      </form>
+      <ForgotPasswordForm />
     </AuthCard>
   );
 }

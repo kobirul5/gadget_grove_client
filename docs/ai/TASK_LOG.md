@@ -89,3 +89,11 @@
 - Kept a compact single-column layout on small screens and reused the approved theme tokens.
 - Kept contrast readable on the dark brand panel and served the existing logo asset directly in the auth layout.
 - Updated the shared component documentation.
+
+## 2026-11-14 — Connecting registration and recovery screens
+
+- Replaced the registration page's standalone verification link with a submit flow that carries the entered email to the OTP screen.
+- Added client-side demo navigation for registration, password recovery, OTP, and password reset steps, with password confirmation and six-digit code validation.
+- Read OTP query values behind Suspense to preserve Next.js prerendering and added accessible password-mismatch validation.
+- Kept actual account creation, email delivery, OTP verification, and password updates unimplemented.
+- Updated auth route, component, state, API-integration, feature, and task documentation.
