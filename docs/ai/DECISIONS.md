@@ -11,5 +11,6 @@ This file records decisions evidenced by the current frontend; it does not presc
 | Use Geist fonts and the Base UI button wrapper. | Root layout loads Geist fonts; `src/components/ui/button.tsx` wraps `@base-ui/react/button`. |
 | Keep current UI pages server-rendered unless client interaction is needed. | Inspected pages/components contain no `"use client"` directives or client state. |
 | Frontend API and auth behavior remain undocumented until implemented and verified. | No request client, auth flow, endpoint, or credential handling was found in `src/`. |
+| Use the approved teal-and-emerald Gadget Grove palette consistently across customer and admin UI in light and dark themes. | The product owner supplied the palette and component/accessibility rules on 2026-11-14. Global design tokens now implement the palette in `src/app/globals.css`; component migration and theme controls remain future work. |
 
 Update this log when a significant frontend architecture or design decision is made, including the evidence and trade-offs.

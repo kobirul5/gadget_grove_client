@@ -16,6 +16,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Follow the existing Next.js architecture, naming, coding, state-management, and styling patterns.
 - Use Server and Client Components appropriately; keep strict TypeScript typing.
 - Build responsive, accessible interfaces and consider frontend performance.
+- Before UI work, read `docs/ai/UI_DESIGN_SYSTEM.md` and inspect the existing CSS variables and theme mappings. Reuse approved tokens, do not introduce arbitrary component colors, and ensure the UI supports both themes.
 - Never invent backend API behavior. Never modify backend or database files.
 - Never expose environment variables or secrets. Avoid unrelated file changes and unnecessary dependencies.
 - Verify changes with relevant checks before reporting completion.
