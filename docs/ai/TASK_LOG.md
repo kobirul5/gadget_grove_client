@@ -44,3 +44,27 @@
 - Reduced `src/app/page.tsx` to composition of the section components.
 - Added the existing shared Footer to the root layout after route content and corrected its home-section anchors.
 - Updated architecture, component, route, project overview, and feature status documentation.
+
+## 2026-11-14 — Aligning Navbar branding, links, and colors
+
+- Replaced starter Navbar text with Gadget Grove branding and links to the implemented storefront sections.
+- Applied responsive layout and global theme tokens for background, border, text, and primary action colors.
+- Replaced button-wrapped anchors with native Next.js links, removing Base UI button semantics warnings from the Navbar.
+- Updated component and design-system documentation.
+
+## 2026-11-14 — Using the public brand logo in Navbar
+
+- Replaced the temporary headphone icon in Navbar with the existing `public/logo.png`.
+- Kept the accessible Gadget Grove brand text and home link alongside the decorative logo image.
+- Updated the Navbar component documentation.
+
+## 2026-11-14 — Supporting the Navbar logo in both themes
+
+- Added the theme-aware surface and border tokens behind the Navbar logo so it remains distinct in light and dark themes.
+- Preserved the original logo image colors and updated the design-system and component documentation.
+
+## 2026-11-14 — Adding persistent light/dark theme toggle
+
+- Added an accessible theme toggle to the global Navbar.
+- Saved explicit theme selections in local storage and made the root layout apply saved or system preference before first paint.
+- Kept the interactive Client Component boundary limited to the toggle and documented the theme behavior.

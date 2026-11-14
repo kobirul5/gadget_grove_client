@@ -4,7 +4,8 @@
 
 | Component | Location | Responsibility and current use |
 |---|---|---|
-| `Navbar` | `src/components/shared/Navbar.tsx` | Site header and navigation. Rendered globally by the root layout. It contains a `/` link, a `/dashboard` link, sample fragment navigation, and a Contact fragment link. |
+| `Navbar` | `src/components/shared/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png` on a theme-aware surface with a token border, links to actual home-page sections, and a Sign in link to `/login`. Uses global theme tokens. |
+| `ThemeToggle` | `src/components/shared/ThemeToggle.tsx` | Accessible light/dark theme toggle used by the Navbar. Applies the corresponding root class and saves the selection in local storage. |
 | `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered globally by the root layout after route content. |
 
 ## Home page section components
@@ -30,8 +31,8 @@
 
 | Component | Location | Responsibility and usage |
 |---|---|---|
-| `Button` | `src/components/ui/button.tsx` | Wraps `@base-ui/react/button`, composes Tailwind classes with `cn`, and supports `variant` and `size` variants via `class-variance-authority`. Used by `Navbar`. |
-The Button variants are `default`, `outline`, `secondary`, `ghost`, `destructive`, and `link`; sizes are `default`, `xs`, `sm`, `lg`, `icon`, `icon-xs`, `icon-sm`, and `icon-lg`. The current home page uses token-styled links and does not use this Button primitive.
+| `Button` | `src/components/ui/button.tsx` | Wraps `@base-ui/react/button`, composes Tailwind classes with `cn`, and supports `variant` and `size` variants via `class-variance-authority`. |
+The Button variants are `default`, `outline`, `secondary`, `ghost`, `destructive`, and `link`; sizes are `default`, `xs`, `sm`, `lg`, `icon`, `icon-xs`, `icon-sm`, and `icon-lg`. The current Navbar and home page use token-styled links and do not use this Button primitive.
 
 ## Utilities
 

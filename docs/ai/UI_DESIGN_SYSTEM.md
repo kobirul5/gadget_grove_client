@@ -4,7 +4,7 @@
 
 The teal-and-emerald palette and component rules in this document are the approved Gadget Grove design target. The palette tokens are now defined in `src/app/globals.css` and mapped into Tailwind's existing theme.
 
-The current frontend still has hardcoded colors in `src/components/shared/Navbar.tsx`, and there is no theme toggle or persisted theme preference. The global tokens are in place, but components have not all been migrated to consume them.
+Global tokens and a persisted light/dark theme toggle are in place, but not every frontend component has been migrated to consume the tokens.
 
 ## Design philosophy and brand
 
@@ -81,7 +81,9 @@ The root declares `color-scheme: light`, `.dark` declares `color-scheme: dark`, 
 - Light theme: white background. Dark theme: surface background.
 - Use the theme border token for dividers and borders.
 - Keep the logo and brand recognizable in both themes.
+- Place the brand logo on the theme surface with a theme border; preserve the logo image colors.
 - Active navigation uses the primary token.
+- The shared Navbar uses the global background, border, primary, and text tokens and links to the implemented storefront sections.
 
 ### Buttons
 
@@ -125,7 +127,8 @@ The root declares `color-scheme: light`, `.dark` declares `color-scheme: dark`, 
 - Do not change the approved brand palette without explicit approval.
 - Reuse CSS variables and existing Tailwind/shadcn patterns; do not add a theme dependency unless a real requirement justifies it.
 - When a theme preference mechanism is implemented, persist the user's choice through that existing mechanism and prevent a theme flash where practical.
-- There is currently no implemented theme toggle or persisted preference. The stylesheet follows `prefers-color-scheme` unless the root has an explicit `.light` or `.dark` class; reconcile this fallback with the approved theme mechanism if theme selection is implemented.
+- `ThemeToggle` saves an explicit choice under `gadget-grove-theme`. A root-layout inline script applies that choice before paint; without a saved choice, the initial theme follows `prefers-color-scheme`.
+- The toggle updates the root `.light` or `.dark` class. If local storage is unavailable, the selection still applies for the current page and the failure to persist is logged.
 - Verify navigation, buttons, cards, inputs, dropdowns, modals, focus states, and text contrast in both themes as those components are built.
 
 ## Accessibility
@@ -154,4 +157,4 @@ Before implementing or changing UI:
 - Tailwind uses CSS-first `@theme inline` and `@custom-variant` directives; no `tailwind.config.*` file was found.
 - `components.json` specifies shadcn `base-nova`, a neutral base color, CSS variables, Lucide icons, and `src/app/globals.css`.
 - The approved brand and semantic color tokens are defined as hex values in light and dark rules. Chart tokens retain their existing OKLCH values. Radius tokens derive `sm` through `4xl` from `--radius: 0.625rem`.
-- The root layout loads Geist and Geist Mono. The current Navbar still includes literal `#111111`, `#2b2b30`, and white utility colors; these are migration targets, not approved exceptions to the token rules.
+- The root layout loads Geist and Geist Mono. Shared site components should use semantic theme tokens rather than literal palette colors.

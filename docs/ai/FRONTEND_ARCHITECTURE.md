@@ -15,11 +15,11 @@ No nested route-group layouts, route handlers, middleware, context providers, or
 
 ## Layout and rendering
 
-`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and renders the shared `Navbar`, route children, and shared `Footer` in that order. The Footer is global and appears on every route.
+`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and renders the shared `Navbar`, route children, and shared `Footer` in that order. A small inline head script applies a saved light/dark preference before paint, or selects the system preference when none is saved. The Footer is global and appears on every route.
 
 The root `src/app/page.tsx` composes the home-page section components in display order. Section markup is kept under `src/components/home/`; static sample product and category content is centralized in `src/components/home/data.ts`.
 
-The pages and components inspected do not declare `"use client"`, so they use the App Router's default Server Component behavior. Keep components server-rendered unless interactivity or browser-only APIs require a Client Component.
+Pages and components remain Server Components by default. `src/components/shared/ThemeToggle.tsx` is a narrowly scoped Client Component because it interacts with the DOM and browser local storage.
 
 `next.config.ts` enables `cacheComponents` and `partialPrefetching`, and configures the Tailwind Turbopack CSS loader. Preserve these settings unless a justified architecture change is needed.
 
@@ -29,4 +29,4 @@ No frontend API client, request calls, query library, or data-fetching hooks wer
 
 ## Navigation
 
-The root `Navbar` uses `next/link` for `/` and `/dashboard`. Its other sample navigation items and Contact button use in-page fragment links. See [ROUTING_AND_PAGES.md](ROUTING_AND_PAGES.md) for the routes currently represented by page files.
+The root `Navbar` uses `next/link` for the home page, implemented home-page sections, and `/login`. Its `ThemeToggle` updates the root theme class and persists explicit choices. See [ROUTING_AND_PAGES.md](ROUTING_AND_PAGES.md) for the routes currently represented by page files.
