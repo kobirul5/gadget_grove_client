@@ -20,7 +20,7 @@ No nested route-group layouts, route handlers, middleware, context providers, or
 
 The root `src/app/page.tsx` composes the home-page section components in display order. Section markup is kept under `src/components/home/`; static sample product and category content is centralized in `src/components/home/data.ts`.
 
-Pages and components remain Server Components by default. `src/components/shared/ThemeToggle.tsx` is a narrowly scoped Client Component because it interacts with the DOM and browser local storage.
+Pages and components remain Server Components by default. The Navbar components are grouped in `src/components/shared/navbar/`; `ThemeToggle.tsx` is a narrowly scoped Client Component because it interacts with the DOM and browser local storage.
 Authentication forms use small Client Components for browser validation and demo route navigation. The OTP route reads its query string in a Client Component wrapped with Suspense so the page can still prerender.
 
 `next.config.ts` enables `cacheComponents` and `partialPrefetching`, and configures the Tailwind Turbopack CSS loader. Preserve these settings unless a justified architecture change is needed.

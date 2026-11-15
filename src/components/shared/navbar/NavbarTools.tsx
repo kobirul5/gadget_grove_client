@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Heart, Search, ShoppingCart, X } from "lucide-react";
 import { allProducts, getProductSlug } from "@/components/home/data";
 import { useCart } from "@/components/cart/CartProvider";
-import ThemeToggle from "@/components/shared/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 
 type OpenPanel = "cart" | "favorites" | null;
 

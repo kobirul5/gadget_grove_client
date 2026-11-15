@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import CategoryNavigation from "@/components/shared/CategoryNavigation";
-import NavbarTools from "@/components/shared/NavbarTools";
+import CategoryNavigation from "./CategoryNavigation";
+import NavbarTools from "./NavbarTools";
 
 export default function Navbar() {
   return (
