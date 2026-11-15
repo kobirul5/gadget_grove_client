@@ -1,19 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import CategoryNavigation from "@/components/shared/CategoryNavigation";
 import NavbarTools from "@/components/shared/NavbarTools";
-
-const categoryItems = [
-  "Apple",
-  "Tablet & Accessories",
-  "Phones",
-  "Desktop",
-  "Laptops",
-  "Gadgets & Accessories",
-  "Appliances",
-  "Lifestyle",
-  "Camera & Networking",
-];
 
 export default function Navbar() {
   return (
@@ -43,27 +31,7 @@ export default function Navbar() {
 
       </nav>
 
-      <nav
-        aria-label="Product categories"
-        className="border-t border-border"
-      >
-        <ul className="mx-auto flex min-h-11 max-w-7xl items-center gap-5 overflow-x-auto px-4 [scrollbar-width:none] sm:gap-7 sm:px-6 lg:justify-between lg:gap-3 lg:px-8">
-          {categoryItems.map((label) => (
-            <li className="shrink-0" key={label}>
-              <Link
-                className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-text-primary transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                href="/#popular-categories"
-              >
-                {label}
-                <ChevronDown
-                  aria-hidden="true"
-                  className="size-3.5 shrink-0 text-text-secondary"
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <CategoryNavigation />
     </header>
   );
 }
