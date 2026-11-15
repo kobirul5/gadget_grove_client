@@ -13,6 +13,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Tailwind CSS theme variables and global light/dark palette tokens.
 - Responsive Gadget Grove storefront structured around the supplied home-page reference, with hero, service strip, category icons, static product collections, promotional banners, flash-sale cards, trending list, and brand product section.
 - A shared responsive product details page at `/products/[slug]`, with a route generated for every distinct local storefront sample product. Product cards and trending rows link to their matching slug. The HP Pavilion has additional sample images and specifications; other products show their available listing data and neutral generic details.
+- A reusable `/products` listing for all products, navigation categories, subcategories, and home-page category links. Category-aware filters, multi-value selections, price sorting, newest/popularity sorting, result counts, pagination, and clear-filter actions are synchronized with URL query parameters and run against the local sample catalog.
 - Home page sections implemented as separate components under `src/components/home/`.
 - Branded global footer with links to existing frontend routes and home-page sections.
 
@@ -29,15 +30,15 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 ## Not found in the inspected frontend
 
-- Server-backed product catalog, search/filter, cart, checkout, or order history.
+- Server-backed product catalog, cart, checkout, or order history.
 - Functional login, registration, OTP verification, password recovery, authentication state, or account management.
 - Admin dashboard functionality or role/permission UI.
 - Frontend API integration, request/error/loading handling, or data-fetching state.
-- Working category filters, product actions, forms, validation rules, tests, or a feature-specific state-management solution.
+- Product category filters use only the attributes present in the local sample catalog; no server-backed filtering or feature-specific state-management solution exists.
 
 ## Known issues
 
-- The Navbar links to the implemented homepage sections; Sign in navigates to the placeholder `/login` route.
+- The Navbar links to the implemented homepage sections; Sign in navigates to the placeholder `/login` route. Category navigation leads to `/products`, which uses the local catalog.
 - Product imagery and catalog details are static samples, not connected to a product API.
 
 No development roadmap or ongoing work was present in the inspected frontend documentation or files. Future status updates should be based on actual code or confirmed project requirements.

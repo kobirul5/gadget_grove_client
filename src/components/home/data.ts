@@ -16,6 +16,21 @@ export type Product = {
   image: string;
   slug?: string;
   label?: string;
+  attributes?: ProductAttributes;
+};
+
+export type ProductAttributes = {
+  brand?: string;
+  productType?: string;
+  ram?: string;
+  storage?: string;
+  screenSize?: string;
+  batteryCapacity?: string;
+  operatingSystem?: string;
+  processor?: string;
+  graphicsCard?: string;
+  color?: string;
+  availability?: string;
 };
 
 export type Category = {
@@ -43,6 +58,10 @@ export const newTrends: Product[] = [
     image:
       "https://images.unsplash.com/photo-1592840496694-26d035b52b48?auto=format&fit=crop&w=700&q=85",
     label: "New",
+    attributes: {
+      productType: "Game Controller",
+      availability: "In stock",
+    },
   },
   {
     name: "Air Purifier Mini",
@@ -52,6 +71,10 @@ export const newTrends: Product[] = [
     image:
       "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=700&q=85",
     label: "New",
+    attributes: {
+      productType: "Air Purifier",
+      availability: "In stock",
+    },
   },
   {
     name: "Galaxy S Series",
@@ -61,6 +84,12 @@ export const newTrends: Product[] = [
     image:
       "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85",
     label: "Just in",
+    attributes: {
+      brand: "Samsung",
+      productType: "Phone",
+      operatingSystem: "Android",
+      availability: "In stock",
+    },
   },
   {
     name: "Studio Wireless Headphones",
@@ -70,6 +99,10 @@ export const newTrends: Product[] = [
     image:
       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85",
     label: "New",
+    attributes: {
+      productType: "Headphones",
+      availability: "In stock",
+    },
   },
   {
     name: "Classic Smart Watch",
@@ -78,6 +111,10 @@ export const newTrends: Product[] = [
     oldPrice: "৳ 16,000",
     image:
       "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85",
+    attributes: {
+      productType: "Smartwatch",
+      availability: "In stock",
+    },
   },
 ];
 
@@ -93,6 +130,16 @@ export const featuredProducts: Product[] = [
     image:
       "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85",
     slug: "hp-pavilion-16",
+    attributes: {
+      brand: "HP",
+      productType: "Laptop",
+      processor: "AMD Ryzen 7 8840U",
+      ram: "8GB",
+      storage: "512GB",
+      screenSize: "16 inches",
+      operatingSystem: "Windows 11",
+      graphicsCard: "AMD Radeon 780M",
+    },
   },
 ];
 
@@ -119,6 +166,10 @@ export const trendingProducts: Product[] = [
     oldPrice: "৳ 72,000",
     image:
       "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=85",
+    attributes: {
+      productType: "Camera",
+      availability: "In stock",
+    },
   },
   featuredProducts[3],
 ];
@@ -176,17 +227,28 @@ export function getProductSlug(product: Product) {
   );
 }
 
-export const allProducts = Array.from(
-  new Map(
-    [
-      ...newTrends,
-      ...featuredProducts,
-      ...saleProducts,
-      ...trendingProducts,
-      ...brandProducts,
-    ].map((product) => [getProductSlug(product), product]),
-  ).values(),
-);
+const productsBySlug = new Map<string, Product>();
+
+for (const product of [
+  ...newTrends,
+  ...featuredProducts,
+  ...saleProducts,
+  ...trendingProducts,
+  ...brandProducts,
+]) {
+  const slug = getProductSlug(product);
+  const existingProduct = productsBySlug.get(slug);
+  productsBySlug.set(slug, {
+    ...existingProduct,
+    ...product,
+    attributes: {
+      ...existingProduct?.attributes,
+      ...product.attributes,
+    },
+  });
+}
+
+export const allProducts = Array.from(productsBySlug.values());
 
 export function getProductBySlug(slug: string) {
   return allProducts.find((product) => getProductSlug(product) === slug);

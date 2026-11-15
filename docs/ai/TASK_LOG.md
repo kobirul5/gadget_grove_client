@@ -1,5 +1,12 @@
 # Task Log
 
+## 2026-11-16 — Adding dynamic category product listings
+
+- Added one reusable `/products` route for all products, navigation categories, and subcategories, backed by shared catalog/category metadata and the existing local sample products.
+- Added category-specific filters, simultaneous filter selection, price/newest/popularity sorting, result counts, pagination, clear-filter actions, and URL-synchronized state without full page reloads.
+- Routed the category mega-menu, its “View All” links, and Popular Categories links to the selected product listing.
+- Preserved the existing `/products/[slug]` details route and documented that the listing uses local sample data rather than a backend API.
+
 ## 2026-11-14 — Frontend documentation setup
 
 - Inspected the existing root `AGENTS.md`, frontend package/configuration, App Router pages/layout, shared components, utility, and global stylesheet.
