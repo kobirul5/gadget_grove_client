@@ -4,8 +4,9 @@
 
 | Component | Location | Responsibility and current use |
 |---|---|---|
-| `Navbar` | `src/components/shared/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png`, storefront section links, and the search/cart/favorites/theme/sign-in tools. Search suggestions navigate to matching local sample products; cart/favorites open empty-state panels and are not connected to shared state or a backend. |
-| `NavbarTools` | `src/components/shared/NavbarTools.tsx` | Client-side search over the local sample catalog with matching product suggestions, plus accessible cart and favorites empty-state panels. |
+| `CartProvider`, `useCart` | `src/components/cart/CartProvider.tsx` | Shares cart items between product details and the Navbar and persists product slugs and quantities to browser `localStorage`. |
+| `Navbar` | `src/components/shared/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png`, storefront section links, and the search/cart/favorites/theme/sign-in tools. Search suggestions navigate to matching local sample products. |
+| `NavbarTools` | `src/components/shared/NavbarTools.tsx` | Client-side search over the local sample catalog with matching product suggestions, plus the saved-cart and favorites panels. |
 | `ThemeToggle` | `src/components/shared/ThemeToggle.tsx` | Accessible light/dark theme toggle used by the Navbar. Applies the corresponding root class and saves the selection in local storage. |
 | `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered globally by the root layout after route content. |
 
@@ -29,7 +30,7 @@
 | `FlashSaleSection` | `src/components/home/FlashSaleSection.tsx` | Static sale product cards. |
 | `TrendingNowSection` | `src/components/home/TrendingNowSection.tsx` | Horizontal trending-product rows. |
 | `TopBrandProductsSection` | `src/components/home/TopBrandProductsSection.tsx` | Brand labels and featured product cards. |
-| `ProductDetailPage` | `src/components/products/ProductDetailPage.tsx` | Reusable responsive details template driven by a `Product` prop. Shows the selected item's name, category, price, image, and related-product links; the HP Pavilion sample has additional images and specs. Quantity, compare, tabs, and cart feedback are local UI state only. |
+| `ProductDetailPage` | `src/components/products/ProductDetailPage.tsx` | Reusable responsive details template driven by a `Product` prop. Shows the selected item's name, category, price, image, and related-product links; the HP Pavilion sample has additional images and specs. Cart additions persist in browser `localStorage`; compare, tabs, and quantity selection use local UI state. |
 
 `src/app/page.tsx` composes these sections. Shared home UI and static data:
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Heart, Search, ShoppingCart, X } from "lucide-react";
 import { allProducts, getProductSlug } from "@/components/home/data";
+import { useCart } from "@/components/cart/CartProvider";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 
 type OpenPanel = "cart" | "favorites" | null;
@@ -14,6 +15,7 @@ export default function NavbarTools() {
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [openPanel, setOpenPanel] = useState<OpenPanel>(null);
+  const { items: cartItems, itemCount, storageError } = useCart();
 
   const normalizedQuery = query.trim().toLowerCase();
   const results = normalizedQuery
@@ -168,7 +170,7 @@ export default function NavbarTools() {
           <button
             aria-expanded={openPanel === "cart"}
             aria-haspopup="dialog"
-            aria-label="Shopping cart"
+            aria-label={`Shopping cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
             className="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-text-primary transition-colors hover:bg-surface-secondary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:size-9"
             onClick={() => {
               setOpenPanel((current) => (current === "cart" ? null : "cart"));
@@ -177,6 +179,14 @@ export default function NavbarTools() {
             type="button"
           >
             <ShoppingCart aria-hidden="true" className="size-4" />
+            {itemCount > 0 ? (
+              <span
+                aria-hidden="true"
+                className="absolute -top-1 -right-1 grid min-h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground"
+              >
+                {itemCount}
+              </span>
+            ) : null}
           </button>
           {openPanel === "cart" ? (
             <div
@@ -187,9 +197,37 @@ export default function NavbarTools() {
               <p className="text-sm font-semibold text-text-primary">
                 Your cart
               </p>
-              <p className="mt-1 text-xs text-text-secondary">
-                Your cart is empty. Add a product to get started.
-              </p>
+              {storageError ? (
+                <p className="mt-2 text-xs text-error" role="alert">
+                  {storageError}
+                </p>
+              ) : null}
+              {cartItems.length ? (
+                <ul className="mt-3 max-h-64 space-y-3 overflow-y-auto">
+                  {cartItems.map(({ product, quantity }) => (
+                    <li
+                      className="flex items-start justify-between gap-3 border-t border-border pt-3"
+                      key={getProductSlug(product)}
+                    >
+                      <span className="min-w-0 text-xs text-text-primary">
+                        <span className="block truncate font-medium">
+                          {product.name}
+                        </span>
+                        <span className="mt-1 block text-text-secondary">
+                          Qty: {quantity}
+                        </span>
+                      </span>
+                      <span className="shrink-0 text-xs font-semibold text-primary">
+                        {product.price}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-1 text-xs text-text-secondary">
+                  Your cart is empty. Add a product to get started.
+                </p>
+              )}
               <Link
                 className="mt-3 inline-flex text-xs font-semibold text-primary hover:underline"
                 href="/#featured-products"

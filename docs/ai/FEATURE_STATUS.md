@@ -6,7 +6,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 - Next.js App Router application with root layout and global styles.
 - Responsive Gadget Grove navigation with storefront section links, a Sign in link, theme-token colors, and Geist fonts.
-- Navbar product search with local-catalog suggestions and accessible cart/favorites empty-state panels.
+- Navbar product search with local-catalog suggestions, a cart panel backed by browser `localStorage`, and a favorites empty-state panel.
 - Accessible Navbar light/dark theme toggle with saved preference and system-theme default.
 - Visitable authentication screens at `/login`, `/register`, `/forgot-password`, `/verify-otp`, and `/reset-password`; registration and recovery screens support browser-side validation and client-side demo navigation.
 - Reusable Base UI-backed button.
@@ -19,8 +19,9 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 ## Starter content / placeholders
 
 - Home page product names, prices, ratings, counts, and service claims are static presentation samples and are not backed by a product API.
-- Product imagery, specifications, ratings, related-product listings, and cart state are static or local UI samples, not backed by a catalog or cart API.
-- Navbar cart and favorites panels are UI-only empty states and do not share or persist product details-page cart/compare state.
+- Product imagery, specifications, ratings, and related-product listings are static samples, not backed by a product API.
+- Cart additions from product details persist product slugs and quantities in browser `localStorage` and appear in the shared Navbar cart panel; they are not synced to an account or server.
+- Favorites and compare remain frontend-only UI and do not persist.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
 - `/account` and `/dashboard` render `null`.
 - `/dashboard` is a placeholder route and is not linked from the storefront navigation.
@@ -28,7 +29,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 ## Not found in the inspected frontend
 
-- Functional product catalog, search/filter, cart, checkout, or order history.
+- Server-backed product catalog, search/filter, cart, checkout, or order history.
 - Functional login, registration, OTP verification, password recovery, authentication state, or account management.
 - Admin dashboard functionality or role/permission UI.
 - Frontend API integration, request/error/loading handling, or data-fetching state.

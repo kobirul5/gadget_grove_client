@@ -20,6 +20,7 @@ import {
   getProductSlug,
   type Product,
 } from "@/components/home/data";
+import { useCart } from "@/components/cart/CartProvider";
 
 const hpAdditionalImages = [
   {
@@ -182,10 +183,20 @@ export default function ProductDetailPage({ product }: { product: Product }) {
   const [activeTab, setActiveTab] = useState<ProductTab>("Specification");
   const [quantity, setQuantity] = useState(1);
   const [isCompared, setIsCompared] = useState(false);
-  const [cartQuantity, setCartQuantity] = useState(0);
+  const [cartMessage, setCartMessage] = useState("");
+  const { items: cartItems, addItem, storageError } = useCart();
+  const cartQuantity =
+    cartItems.find(
+      (item) => getProductSlug(item.product) === getProductSlug(product),
+    )?.quantity ?? 0;
 
   function addToCart() {
-    setCartQuantity((currentQuantity) => currentQuantity + quantity);
+    const didSave = addItem(product, quantity);
+    setCartMessage(
+      didSave
+        ? `${quantity} ${quantity === 1 ? "item" : "items"} added to cart`
+        : "Your item could not be saved to the cart.",
+    );
   }
 
   const discount =
@@ -385,7 +396,7 @@ export default function ProductDetailPage({ product }: { product: Product }) {
               </div>
               <span className="text-xs text-text-secondary">
                 {cartQuantity > 0
-                  ? `${cartQuantity} ${cartQuantity === 1 ? "item" : "items"} added`
+                  ? `${cartQuantity} ${cartQuantity === 1 ? "item" : "items"} in cart`
                   : "Select quantity"}
               </span>
             </div>
@@ -409,10 +420,13 @@ export default function ProductDetailPage({ product }: { product: Product }) {
               </Button>
             </div>
             <p aria-live="polite" className="sr-only">
-              {cartQuantity > 0
-                ? `${cartQuantity} ${cartQuantity === 1 ? "item" : "items"} added to cart`
-                : ""}
+              {cartMessage}
             </p>
+            {storageError ? (
+              <p className="mt-3 text-sm text-error" role="alert">
+                {storageError}
+              </p>
+            ) : null}
 
             <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-5">
               <div className="flex flex-col items-center gap-2 text-center text-[11px] text-text-secondary sm:flex-row sm:text-left">

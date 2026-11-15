@@ -120,3 +120,10 @@
 - Kept cart and favorites as frontend-only UI; they are not connected to the product details demo state or a backend.
 - Wrapped product-route URL parameter access in Suspense with a loading fallback after verifying Navbar search navigation against the current Next.js runtime.
 - Updated component and feature-status documentation.
+
+## 2026-11-15 — Persisting cart items in the browser
+
+- Connected product-detail Add to Cart and Buy Now actions to shared cart state and saved product slugs and quantities in browser `localStorage`.
+- Restored saved items on load and displayed quantities and products in the Navbar cart panel.
+- Kept cart storage local to the browser; no backend cart or checkout integration was added.
+- Updated component, route, state-management, and feature-status documentation.
