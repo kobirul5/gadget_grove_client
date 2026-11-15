@@ -19,63 +19,68 @@ const categories = [
   {
     label: "Tablet & Accessories",
     columns: [
-      ["iPad", "Android Tablets"],
-      ["Cases & Covers", "Screen Protectors"],
-      ["Keyboards", "Stylus Pens"],
+      ["iPad", "Android Tablets", "Samsung Galaxy Tab", "Lenovo Tablets", "Kids Tablets"],
+      ["Cases & Covers", "Screen Protectors", "Folio Cases", "Rugged Cases", "Keyboard Cases"],
+      ["Keyboards", "Stylus Pens", "Bluetooth Keyboards", "Tablet Stands", "USB-C Hubs"],
     ],
   },
   {
     label: "Phones",
     columns: [
-      ["iPhone", "Samsung"],
-      ["Xiaomi", "OnePlus"],
-      ["Phone Accessories", "Cases & Covers"],
+      ["iPhone", "Samsung", "Xiaomi", "OnePlus", "Google Pixel"],
+      ["OPPO", "vivo", "Realme", "Honor", "Nothing Phone"],
+      ["Phone Accessories", "Cases & Covers", "Screen Protectors", "Chargers & Cables", "Power Banks"],
+      ["Feature Phones", "Gaming Phones", "Refurbished Phones", "Wireless Chargers", "Phone Holders"],
     ],
   },
   {
     label: "Desktop",
     columns: [
-      ["Desktop PCs", "All-in-One PCs"],
-      ["Monitors", "Keyboards & Mouse"],
+      ["Desktop PCs", "All-in-One PCs", "Mini PCs", "Gaming Desktops", "Workstations"],
+      ["Monitors", "Gaming Monitors", "4K Monitors", "Ultrawide Monitors", "Monitor Arms"],
+      ["Keyboards & Mouse", "Webcams", "Speakers", "UPS & Power", "Desktop Components"],
     ],
   },
   {
     label: "Laptops",
     columns: [
-      ["MacBook", "Windows Laptops"],
-      ["Gaming Laptops", "Laptop Accessories"],
+      ["MacBook", "Windows Laptops", "Chromebooks", "2-in-1 Laptops", "Business Laptops"],
+      ["Gaming Laptops", "Creator Laptops", "Ultrabooks", "Student Laptops", "Workstation Laptops"],
+      ["Laptop Bags", "Laptop Stands", "Cooling Pads", "Docks & Hubs", "Laptop Chargers"],
     ],
   },
   {
     label: "Gadgets & Accessories",
     columns: [
-      ["Headphones", "Smartwatches"],
-      ["Speakers", "Power Banks"],
-      ["Chargers & Cables", "Smart Home"],
+      ["Headphones", "Earbuds", "Smartwatches", "Fitness Bands", "Speakers"],
+      ["Power Banks", "Wall Chargers", "Wireless Chargers", "Charging Docks", "Chargers & Cables"],
+      ["Smart Home", "Smart Plugs", "Smart Lights", "Security Devices", "Voice Assistants"],
+      ["Gaming Accessories", "Memory Cards", "USB Hubs", "Adapters", "Car Accessories"],
     ],
   },
   {
     label: "Appliances",
     columns: [
-      ["Air Conditioners", "Refrigerators"],
-      ["Washing Machines", "Air Purifiers"],
-      ["Kitchen Appliances"],
+      ["Air Conditioners", "Refrigerators", "Freezers", "Water Dispensers", "Dehumidifiers"],
+      ["Washing Machines", "Dryers", "Air Purifiers", "Vacuum Cleaners", "Fans"],
+      ["Kitchen Appliances", "Microwaves", "Coffee Makers", " blenders", "Electric Kettles"],
+      ["Rice Cookers", "Air Fryers", "Toasters", "Water Heaters", "Home Accessories"],
     ],
   },
   {
     label: "Lifestyle",
     columns: [
-      ["Wearables", "Gaming"],
-      ["Travel", "Smart Home"],
-      ["Personal Care"],
+      ["Wearables", "Gaming", "Fitness Trackers", "Sports Watches", "Health Monitors"],
+      ["Travel", "Travel Adapters", "Luggage Trackers", "Portable Speakers", "Car Gadgets"],
+      ["Smart Home", "Personal Care", "Electric Toothbrushes", "Hair Care", "Lifestyle Accessories"],
     ],
   },
   {
     label: "Camera & Networking",
     columns: [
-      ["Digital Cameras", "Action Cameras"],
-      ["Wi-Fi Routers", "Mesh Wi-Fi"],
-      ["CCTV Cameras"],
+      ["Digital Cameras", "Action Cameras", "Mirrorless Cameras", "DSLR Cameras", "Instant Cameras"],
+      ["Wi-Fi Routers", "Mesh Wi-Fi", "Range Extenders", "Network Switches", "Modems"],
+      ["CCTV Cameras", "IP Cameras", "Video Doorbells", "Security Systems", "Camera Accessories"],
     ],
   },
 ];
@@ -160,7 +165,7 @@ export default function CategoryNavigation() {
 
       {openCategory !== null ? (
         <div
-          className="absolute inset-x-0 top-full z-50 border-y border-border bg-surface shadow-lg shadow-primary/10"
+          className="absolute inset-x-0 top-full z-50 border-t border-border bg-surface shadow-lg shadow-primary/10"
           id="category-mega-menu"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
