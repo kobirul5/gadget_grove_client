@@ -1,13 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import NavbarTools from "@/components/shared/NavbarTools";
 
-const navigationItems = [
-  { label: "Categories", href: "/#popular-categories" },
-  { label: "New Trends", href: "/#new-trends" },
-  { label: "Featured Products", href: "/#featured-products" },
-  { label: "Flash Sale", href: "/#flash-sale" },
-  { label: "Top Brands", href: "/#top-brand-products" },
+const categoryItems = [
+  "Apple",
+  "Tablet & Accessories",
+  "Phones",
+  "Desktop",
+  "Laptops",
+  "Gadgets & Accessories",
+  "Appliances",
+  "Lifestyle",
+  "Camera & Networking",
 ];
 
 export default function Navbar() {
@@ -36,19 +41,28 @@ export default function Navbar() {
 
         <NavbarTools />
 
-        <ul className="col-span-2 row-start-3 flex max-w-full items-center gap-1 overflow-x-auto [scrollbar-width:none] md:col-span-3 md:row-start-2 md:justify-center">
-          {navigationItems.map((item) => (
-            <li className="shrink-0" key={item.label}>
+      </nav>
+
+      <nav
+        aria-label="Product categories"
+        className="border-t border-border"
+      >
+        <ul className="mx-auto flex min-h-11 max-w-7xl items-center gap-5 overflow-x-auto px-4 [scrollbar-width:none] sm:gap-7 sm:px-6 lg:justify-between lg:gap-3 lg:px-8">
+          {categoryItems.map((label) => (
+            <li className="shrink-0" key={label}>
               <Link
-                className="inline-flex min-h-9 items-center rounded-full px-3 text-xs font-medium text-text-secondary transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:px-3.5 sm:text-sm"
-                href={item.href}
+                className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-text-primary transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                href="/#popular-categories"
               >
-                {item.label}
+                {label}
+                <ChevronDown
+                  aria-hidden="true"
+                  className="size-3.5 shrink-0 text-text-secondary"
+                />
               </Link>
             </li>
           ))}
         </ul>
-
       </nav>
     </header>
   );

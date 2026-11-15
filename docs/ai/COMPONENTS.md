@@ -5,7 +5,7 @@
 | Component | Location | Responsibility and current use |
 |---|---|---|
 | `CartProvider`, `useCart` | `src/components/cart/CartProvider.tsx` | Shares cart items between product details and the Navbar and persists product slugs and quantities to browser `localStorage`. |
-| `Navbar` | `src/components/shared/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png`, storefront section links, and the search/cart/favorites/theme/sign-in tools. Search suggestions navigate to matching local sample products. |
+| `Navbar` | `src/components/shared/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png`, a secondary product-category navigation row, and the search/cart/favorites/theme/sign-in tools. Search suggestions navigate to matching local sample products. |
 | `NavbarTools` | `src/components/shared/NavbarTools.tsx` | Client-side search over the local sample catalog with matching product suggestions, plus the saved-cart and favorites panels. |
 | `ThemeToggle` | `src/components/shared/ThemeToggle.tsx` | Accessible light/dark theme toggle used by the Navbar. Applies the corresponding root class and saves the selection in local storage. |
 | `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered globally by the root layout after route content. |
