@@ -16,6 +16,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - A reusable `/products` listing for all products, navigation categories, subcategories, and home-page category links. Category-aware filters, multi-value selections, price sorting, newest/popularity sorting, result counts, pagination, and clear-filter actions are synchronized with URL query parameters and run against the local sample catalog.
 - A `/cart` page showing saved products, quantities, line totals, and subtotal, with controls to change quantities or remove items.
 - Guest `/checkout` flow for placing the whole cart order or going directly from a product's Buy Now action with its selected quantity. Checkout collects contact and delivery details, supports cash on delivery, saves a local demo order, and displays its `/order-confirmation` page.
+- Responsive `/dashboard` admin UI with reusable navigation shell, order-derived metrics/revenue chart/category summaries, searchable recent orders, and product catalog link. Dashboard order data is browser-local.
 - Home page sections implemented as separate components under `src/components/home/`.
 - Branded global footer with links to existing frontend routes and home-page sections.
 
@@ -27,8 +28,8 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Checkout orders and customer delivery details are saved only in browser `localStorage`. No order reaches the store, and payment, shipping fees, and fulfillment are not connected.
 - Favorites and compare remain frontend-only UI and do not persist.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
-- `/account` and `/dashboard` render `null`.
-- `/dashboard` is a placeholder route and is not linked from the storefront navigation.
+- `/account` renders `null`.
+- Dashboard is a frontend view only: it is not authenticated/role-protected and cannot create or edit catalog products, manage inventory, change order status, or access orders saved in other browsers.
 - Root layout metadata uses Gadget Grove branding.
 
 ## Not found in the inspected frontend

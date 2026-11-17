@@ -2,6 +2,11 @@ import { getProductSlug } from "@/components/home/data";
 import type { CartItem } from "@/components/cart/CartProvider";
 
 const ORDER_STORAGE_PREFIX = "gadget-grove-order-";
+const emptyOrders: Order[] = [];
+
+let orderSnapshot: Order[] = emptyOrders;
+let hasLoadedOrders = false;
+const orderListeners = new Set<() => void>();
 
 export type OrderCustomer = {
   fullName: string;
@@ -120,7 +125,68 @@ export function createOrder(items: CartItem[], customer: OrderCustomer) {
     );
   }
 
+  if (hasLoadedOrders) {
+    orderSnapshot = [order, ...orderSnapshot];
+    orderListeners.forEach((listener) => listener());
+  }
+
   return order;
+}
+
+function loadOrders() {
+  const savedOrders: Order[] = [];
+
+  try {
+    for (let index = 0; index < window.localStorage.length; index += 1) {
+      const key = window.localStorage.key(index);
+      if (!key?.startsWith(ORDER_STORAGE_PREFIX)) continue;
+
+      const orderId = key.slice(ORDER_STORAGE_PREFIX.length);
+      const order = readOrder(orderId);
+      if (order) savedOrders.push(order);
+    }
+  } catch (error) {
+    console.error("Could not load orders from this browser.", error);
+  }
+
+  savedOrders.sort(
+    (first, second) =>
+      new Date(second.createdAt).getTime() -
+      new Date(first.createdAt).getTime(),
+  );
+  orderSnapshot = savedOrders;
+  hasLoadedOrders = true;
+  orderListeners.forEach((listener) => listener());
+}
+
+function handleOrderStorageChange(event: StorageEvent) {
+  if (
+    event.key !== null &&
+    !event.key.startsWith(ORDER_STORAGE_PREFIX)
+  ) {
+    return;
+  }
+
+  loadOrders();
+}
+
+export function subscribeToOrders(listener: () => void) {
+  orderListeners.add(listener);
+  window.addEventListener("storage", handleOrderStorageChange);
+  if (!hasLoadedOrders) loadOrders();
+
+  return () => {
+    orderListeners.delete(listener);
+    window.removeEventListener("storage", handleOrderStorageChange);
+  };
+}
+
+export function getOrdersSnapshot() {
+  return orderSnapshot;
+}
+
+export function getEmptyOrdersSnapshot() {
+  return emptyOrders;
 }
 
 export function readOrder(orderId: string) {

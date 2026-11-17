@@ -4,6 +4,7 @@
 
 | Component | Location | Responsibility and current use |
 |---|---|---|
+| `AppChrome` | `src/components/shared/AppChrome.tsx` | Renders storefront Navbar/Footer on customer routes and leaves `/dashboard` to its admin shell. |
 | `CartProvider`, `useCart` | `src/components/cart/CartProvider.tsx` | Shares cart items between product details and the Navbar and persists product slugs and quantities to browser `localStorage`. |
 | `CartPage` | `src/components/cart/CartPage.tsx` | Client-side `/cart` view of saved products with quantity controls, removal, subtotal, and a link to checkout. |
 | `CheckoutPage`, `OrderConfirmationPage` | `src/components/orders/` | Guest checkout for a cart or direct single-product purchase, with an accessible success dialog and browser-local demo order details. No order API, payment processing, or delivery integration is connected. |
@@ -11,7 +12,18 @@
 | `CategoryNavigation` | `src/components/shared/navbar/CategoryNavigation.tsx` | Accessible, responsive category mega-menu backed by shared catalog category metadata. Category and subcategory links, including “View All,” open the matching `/products` listing. |
 | `NavbarTools` | `src/components/shared/navbar/NavbarTools.tsx` | Client-side search over the local sample catalog with matching product suggestions, plus the saved-cart and favorites panels. |
 | `ThemeToggle` | `src/components/shared/navbar/ThemeToggle.tsx` | Accessible light/dark theme toggle used by the Navbar. Applies the corresponding root class and saves the selection in local storage. |
-| `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered globally by the root layout after route content. |
+| `Footer` | `src/components/shared/Footer.tsx` | Gadget Grove brand footer with shop/account links and service highlights. Rendered on storefront routes by `AppChrome`. |
+
+## Admin dashboard components
+
+| Component | Location | Responsibility |
+|---|---|---|
+| `AdminDashboardShell` | `src/components/admin/AdminDashboardShell.tsx` | Responsive admin sidebar and header with mobile navigation and theme control. |
+| `AdminDashboard` | `src/components/admin/AdminDashboard.tsx` | Derives revenue, order, customer, product, monthly-revenue, and category summaries from browser-local orders and the local catalog. |
+| `DashboardStatCard` | `src/components/admin/DashboardStatCard.tsx` | Reusable label/value/description KPI card with an icon. |
+| `RevenueChart` | `src/components/admin/RevenueChart.tsx` | Accessible responsive chart for monthly local order totals. |
+| `TopCategoriesPanel` | `src/components/admin/TopCategoriesPanel.tsx` | Reusable category revenue summary with responsive progress indicators. |
+| `RecentOrdersTable` | `src/components/admin/RecentOrdersTable.tsx` | Searchable responsive table of orders saved in this browser. |
 
 ## Authentication components
 

@@ -9,14 +9,15 @@ The frontend is in `src/` and uses the App Router:
 - `src/components/shared/` contains shared page chrome.
 - `src/components/home/` contains the home page's individual section components and shared static sample data.
 - `src/components/products/` contains the reusable product details page, whose slug lookup and generated routes use the local sample catalog in `src/components/home/data.ts`.
+- `src/components/admin/` contains the responsive admin dashboard shell and reusable summary, chart, category, and orders components.
 - `src/components/ui/` contains reusable UI primitives.
 - `src/lib/` contains shared utilities.
 
-No nested route-group layouts, route handlers, middleware, context providers, or frontend service/data layers were found in the inspected source.
+No route handlers, middleware, or general frontend service/data layer were found in the inspected source. The root layout provides the cart context and delegates storefront chrome to `AppChrome`; the dashboard route uses its own shell without the storefront Navbar or Footer.
 
 ## Layout and rendering
 
-`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and renders the shared `Navbar`, route children, and shared `Footer` in that order. A small inline head script applies a saved light/dark preference before paint, or selects the system preference when none is saved. The Footer is global and appears on every route.
+`src/app/layout.tsx` is the root layout. It imports global CSS, loads Geist and Geist Mono through `next/font/google`, sets the document language to English, and wraps route content with the shared cart provider and `AppChrome`. `AppChrome` renders the shared `Navbar` and `Footer` on storefront routes and leaves `/dashboard` to its admin shell. A small inline head script applies a saved light/dark preference before paint, or selects the system preference when none is saved.
 
 The root `src/app/page.tsx` composes the home-page section components in display order. Section markup is kept under `src/components/home/`; static sample product and category content is centralized in `src/components/home/data.ts`.
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/navbar/Navbar";
+import AppChrome from "@/components/shared/AppChrome";
 import { CartProvider } from "@/components/cart/CartProvider";
 import "./globals.css";
 
@@ -45,9 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <AppChrome>{children}</AppChrome>
         </CartProvider>
       </body>
     </html>

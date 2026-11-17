@@ -1,5 +1,11 @@
 # Task Log
 
+## 2026-11-18 — Building the admin dashboard
+
+- Replaced the empty `/dashboard` placeholder with a responsive admin workspace and reusable navigation, KPI, revenue chart, category panel, and recent orders components.
+- Added browser-local order subscriptions so dashboard metrics and order rows use actual saved checkout orders and update across tabs.
+- Hid storefront Navbar/Footer on the dashboard route and documented that admin/product/order management APIs and authentication are not implemented.
+
 ## 2026-11-18 — Showing an order success modal
 
 - Opened a themed, accessible success dialog after saving a checkout order.
