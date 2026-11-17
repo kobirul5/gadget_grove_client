@@ -1,5 +1,11 @@
 # Task Log
 
+## 2026-11-18 — Adding the shopping cart page
+
+- Added `/cart` to show saved products, quantities, line totals, and subtotal, with controls to update quantities or remove items.
+- Linked the full cart page from the Navbar cart panel and kept cart state in the existing browser-local storage.
+- Documented that checkout and server-synced cart behavior are not implemented.
+
 ## 2026-11-16 — Adding dynamic category product listings
 
 - Added one reusable `/products` route for all products, navigation categories, and subcategories, backed by shared catalog/category metadata and the existing local sample products.

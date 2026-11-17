@@ -35,7 +35,10 @@ type CartContextValue = {
   items: CartItem[];
   itemCount: number;
   storageError: string | null;
+  isHydrated: boolean;
   addItem: (product: Product, quantity: number) => boolean;
+  updateQuantity: (productSlug: string, quantity: number) => boolean;
+  removeItem: (productSlug: string) => boolean;
 };
 
 const emptySnapshot: CartSnapshot = {
@@ -94,6 +97,26 @@ function serializeCart(items: CartItem[]) {
     quantity,
   }));
   return JSON.stringify(storedItems);
+}
+
+function saveItems(items: CartItem[]) {
+  try {
+    window.localStorage.setItem(CART_STORAGE_KEY, serializeCart(items));
+  } catch (error) {
+    console.error("Could not save the shopping cart in this browser.", error);
+    updateSnapshot({
+      ...snapshot,
+      storageError: "Your cart could not be saved in this browser.",
+    });
+    return false;
+  }
+
+  updateSnapshot({
+    items,
+    storageError: null,
+    isHydrated: true,
+  });
+  return true;
 }
 
 function initializeCart() {
@@ -171,23 +194,53 @@ function addItem(product: Product, quantity: number) {
       )
     : [...snapshot.items, { product, quantity }];
 
-  try {
-    window.localStorage.setItem(CART_STORAGE_KEY, serializeCart(nextItems));
-  } catch (error) {
-    console.error("Could not save the shopping cart in this browser.", error);
+  if (
+    nextItems.some(({ quantity: itemQuantity }) => !Number.isSafeInteger(itemQuantity))
+  ) {
     updateSnapshot({
       ...snapshot,
-      storageError: "Your cart could not be saved in this browser.",
+      storageError: "The requested quantity is too large.",
     });
     return false;
   }
 
-  updateSnapshot({
-    items: nextItems,
-    storageError: null,
-    isHydrated: true,
-  });
-  return true;
+  return saveItems(nextItems);
+}
+
+function updateQuantity(productSlug: string, quantity: number) {
+  if (!snapshot.isHydrated || !Number.isSafeInteger(quantity) || quantity < 1) {
+    updateSnapshot({
+      ...snapshot,
+      storageError: "Choose a valid item quantity.",
+    });
+    return false;
+  }
+
+  if (!snapshot.items.some((item) => getProductSlug(item.product) === productSlug)) {
+    return false;
+  }
+
+  const nextItems = snapshot.items.map((item) =>
+    getProductSlug(item.product) === productSlug ? { ...item, quantity } : item,
+  );
+  return saveItems(nextItems);
+}
+
+function removeItem(productSlug: string) {
+  if (!snapshot.isHydrated) {
+    updateSnapshot({
+      ...snapshot,
+      storageError: "Your cart is not ready. Please try again.",
+    });
+    return false;
+  }
+
+  const nextItems = snapshot.items.filter(
+    (item) => getProductSlug(item.product) !== productSlug,
+  );
+  if (nextItems.length === snapshot.items.length) return false;
+
+  return saveItems(nextItems);
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -198,9 +251,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       items: cart.items,
       itemCount,
       storageError: cart.storageError,
+      isHydrated: cart.isHydrated,
       addItem,
+      updateQuantity,
+      removeItem,
     }),
-    [cart.items, cart.storageError, itemCount],
+    [cart.items, cart.isHydrated, cart.storageError, itemCount],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

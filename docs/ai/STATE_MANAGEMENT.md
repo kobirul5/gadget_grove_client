@@ -2,7 +2,7 @@
 
 ## Current implementation
 
-The shared cart uses a React context in `src/components/cart/CartProvider.tsx`. It stores product slugs and quantities in the browser's `localStorage` under `gadget-grove-cart`, restores them on load, synchronizes changes between tabs, and exposes cart state to the product detail and navbar components. Cart data is browser-local and is not sent to a backend.
+The shared cart uses a React context in `src/components/cart/CartProvider.tsx`. It stores product slugs and quantities in the browser's `localStorage` under `gadget-grove-cart`, restores them on load, synchronizes changes between tabs, and exposes cart state to product details, the Navbar, and `/cart`. The cart page can update quantities and remove items. Cart data is browser-local and is not sent to a backend; checkout is not implemented.
 
 The shared `ThemeToggle` is a small Client Component that updates the root theme class and stores the explicit user preference in `localStorage`; the root layout applies that preference before paint and otherwise follows the system color preference. Authentication forms use local Client Component handlers for browser validation and demo navigation between screens; they do not store credentials or create authenticated state.
 

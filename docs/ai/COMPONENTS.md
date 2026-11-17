@@ -5,6 +5,7 @@
 | Component | Location | Responsibility and current use |
 |---|---|---|
 | `CartProvider`, `useCart` | `src/components/cart/CartProvider.tsx` | Shares cart items between product details and the Navbar and persists product slugs and quantities to browser `localStorage`. |
+| `CartPage` | `src/components/cart/CartPage.tsx` | Client-side `/cart` view of saved products with quantity controls, removal, and subtotal; checkout is not implemented. |
 | `Navbar` | `src/components/shared/navbar/Navbar.tsx` | Responsive Gadget Grove header rendered globally by the root layout. Uses the brand logo at `public/logo.png`, a secondary product-category navigation row, and the search/cart/favorites/theme/sign-in tools. Search suggestions navigate to matching local sample products. |
 | `CategoryNavigation` | `src/components/shared/navbar/CategoryNavigation.tsx` | Accessible, responsive category mega-menu backed by shared catalog category metadata. Category and subcategory links, including “View All,” open the matching `/products` listing. |
 | `NavbarTools` | `src/components/shared/navbar/NavbarTools.tsx` | Client-side search over the local sample catalog with matching product suggestions, plus the saved-cart and favorites panels. |

@@ -228,13 +228,22 @@ export default function NavbarTools() {
                   Your cart is empty. Add a product to get started.
                 </p>
               )}
-              <Link
-                className="mt-3 inline-flex text-xs font-semibold text-primary hover:underline"
-                href="/#featured-products"
-                onClick={() => setOpenPanel(null)}
-              >
-                Browse products
-              </Link>
+              <div className="mt-3 flex items-center justify-between gap-3">
+                <Link
+                  className="inline-flex text-xs font-semibold text-primary hover:underline"
+                  href="/products"
+                  onClick={() => setOpenPanel(null)}
+                >
+                  Browse products
+                </Link>
+                <Link
+                  className="inline-flex text-xs font-semibold text-primary hover:underline"
+                  href="/cart"
+                  onClick={() => setOpenPanel(null)}
+                >
+                  View cart
+                </Link>
+              </div>
             </div>
           ) : null}
         </div>
