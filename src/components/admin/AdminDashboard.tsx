@@ -7,8 +7,13 @@ import {
   Boxes,
 } from "lucide-react";
 import { useSyncExternalStore } from "react";
-import { allProducts, getProductBySlug } from "@/components/home/data";
+import { getProductBySlug } from "@/components/home/data";
 import DashboardStatCard from "@/components/admin/DashboardStatCard";
+import {
+  getAdminProductsSnapshot,
+  getEmptyAdminProductsSnapshot,
+  subscribeToAdminProducts,
+} from "@/components/admin/adminProductsStore";
 import RecentOrdersTable from "@/components/admin/RecentOrdersTable";
 import RevenueChart from "@/components/admin/RevenueChart";
 import TopCategoriesPanel, {
@@ -110,6 +115,11 @@ export default function AdminDashboard() {
     getOrdersSnapshot,
     getEmptyOrdersSnapshot,
   );
+  const { products } = useSyncExternalStore(
+    subscribeToAdminProducts,
+    getAdminProductsSnapshot,
+    getEmptyAdminProductsSnapshot,
+  );
   const totalRevenue = orders.reduce((total, order) => total + order.subtotal, 0);
   const monthlyRevenue = getMonthlyRevenue(orders);
   const topCategories = getTopCategories(orders);
@@ -164,10 +174,10 @@ export default function AdminDashboard() {
           />
         </div>
         <DashboardStatCard
-          hint="Products in the sample catalog"
+          hint="Products in this browser catalog"
           icon={Boxes}
           label="Products"
-          value={allProducts.length.toLocaleString("en-BD")}
+          value={products.length.toLocaleString("en-BD")}
         />
       </section>
 

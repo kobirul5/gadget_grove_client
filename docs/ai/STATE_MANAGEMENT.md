@@ -8,12 +8,15 @@ The shared `ThemeToggle` is a small Client Component that updates the root theme
 
 The `/products` listing reads category, filters, sorting, and pagination from the URL query string using `useSearchParams`. Native `history.replaceState` updates filters and sorting without a full navigation; pagination uses `pushState` so users can return to the previous page state. Listing results are derived from the local sample catalog and no data-fetching hooks, query/cache library usage, or request calls are used.
 
+The admin `/dashboard/products` and `/dashboard/inventory` pages share an external-store subscription in `src/components/admin/adminProductsStore.ts`. It seeds inventory quantities and thresholds for the local sample catalog, then saves admin product edits, publish-demo status, stock adjustments, and alert read state to `gadget-grove-admin-products` in browser `localStorage`, with cross-tab updates. The seeded stock values and all admin catalog changes are local demo data: they do not update the storefront catalog or any server.
+
 ## Guidance for future work
 
 - Keep static and server-renderable UI as Server Components.
 - Introduce a Client Component only where browser interaction, client state, or browser APIs require it; isolate the client boundary as narrowly as practical.
 - Keep the theme preference in sync between `gadget-grove-theme` in local storage and the root `.light` / `.dark` class. If storage is unavailable, the toggle still changes the current page theme.
 - Cart contents are local to the current browser profile and device; they are not account-synced or persisted on a server.
+- Admin catalog and inventory state is local to this browser profile; it is not connected to the storefront catalog, accounts, or a server.
 - Keep listing state in the URL so category pages can be shared and reloaded. Add catalog attributes in `src/components/home/data.ts` and category-specific filter definitions in `src/components/products/catalog.ts` when adding sample or API-backed product data.
 - Follow an established project pattern before adding a state library. Document any architectural choice and the features that depend on it.
 - If data fetching is introduced, document the actual frontend mechanism and its error/loading behavior here and in [FRONTEND_API_INTEGRATION.md](FRONTEND_API_INTEGRATION.md).

@@ -16,7 +16,9 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - A reusable `/products` listing for all products, navigation categories, subcategories, and home-page category links. Category-aware filters, multi-value selections, price sorting, newest/popularity sorting, result counts, pagination, and clear-filter actions are synchronized with URL query parameters and run against the local sample catalog.
 - A `/cart` page showing saved products, quantities, line totals, and subtotal, with controls to change quantities or remove items.
 - Guest `/checkout` flow for placing the whole cart order or going directly from a product's Buy Now action with its selected quantity. Checkout collects contact and delivery details, supports cash on delivery, saves a local demo order, and displays its `/order-confirmation` page.
-- Responsive `/dashboard` admin UI with reusable navigation shell, order-derived metrics/revenue chart/category summaries, searchable recent orders, and product catalog link. Dashboard order data is browser-local.
+- Responsive `/dashboard` admin UI with reusable navigation shell, order-derived metrics/revenue chart/category summaries, searchable recent orders, and product count from the shared browser-local admin catalog.
+- `/dashboard/products` product administration demo with sample-catalog KPIs, search/category/stock filters, sorting, pagination, CSV export, and browser-local add/edit/delete and publish-status controls.
+- `/dashboard/inventory` inventory demo with sample stock alerts, category/status filters, pagination, and browser-local stock adjustment and alert acknowledgement.
 - Home page sections implemented as separate components under `src/components/home/`.
 - Branded global footer with links to existing frontend routes and home-page sections.
 
@@ -29,14 +31,14 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Favorites and compare remain frontend-only UI and do not persist.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
 - `/account` renders `null`.
-- Dashboard is a frontend view only: it is not authenticated/role-protected and cannot create or edit catalog products, manage inventory, change order status, or access orders saved in other browsers.
+- Admin dashboard is not authenticated/role-protected. Product management, publish switches, and inventory changes are browser-local demos; they do not update the storefront catalog or a server. Order status and orders saved in other browsers remain unavailable.
 - Root layout metadata uses Gadget Grove branding.
 
 ## Not found in the inspected frontend
 
 - Server-backed product catalog, cart, checkout, order history, payment, or fulfillment.
 - Functional login, registration, OTP verification, password recovery, authentication state, or account management.
-- Admin dashboard functionality or role/permission UI.
+- Server-backed admin catalog/inventory management or admin role/permission enforcement.
 - Frontend API integration, request/error/loading handling, or data-fetching state.
 - Product category filters use only the attributes present in the local sample catalog; no server-backed filtering or feature-specific state-management solution exists.
 

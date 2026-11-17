@@ -9,7 +9,7 @@ The frontend is in `src/` and uses the App Router:
 - `src/components/shared/` contains shared page chrome.
 - `src/components/home/` contains the home page's individual section components and shared static sample data.
 - `src/components/products/` contains the reusable product details page, whose slug lookup and generated routes use the local sample catalog in `src/components/home/data.ts`.
-- `src/components/admin/` contains the responsive admin dashboard shell and reusable summary, chart, category, and orders components.
+- `src/components/admin/` contains the responsive admin shell, dashboard, product/inventory demo pages, and shared browser-local admin catalog store.
 - `src/components/ui/` contains reusable UI primitives.
 - `src/lib/` contains shared utilities.
 

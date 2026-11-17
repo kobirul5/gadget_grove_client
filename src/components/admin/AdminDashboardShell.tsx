@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import {
   Boxes,
+  ClipboardList,
   LayoutDashboard,
   Menu,
   PackageSearch,
@@ -16,11 +17,24 @@ import ThemeToggle from "@/components/shared/navbar/ThemeToggle";
 
 const navigation = [
   { label: "Dashboard", href: "/dashboard#overview", icon: LayoutDashboard },
-  { label: "Products", href: "/products", icon: Boxes },
+  { label: "Products", href: "/dashboard/products", icon: Boxes },
+  { label: "Inventory", href: "/dashboard/inventory", icon: ClipboardList },
   { label: "Categories", href: "/dashboard#categories", icon: Tags },
   { label: "Orders", href: "/dashboard#orders", icon: PackageSearch },
   { label: "Customers", href: "/dashboard#customers", icon: UsersRound },
 ];
+
+const pageHeadings: Record<string, { title: string; subtitle: string }> = {
+  "/dashboard": { title: "Dashboard", subtitle: "Store overview" },
+  "/dashboard/products": {
+    title: "Products",
+    subtitle: "Manage your product catalog",
+  },
+  "/dashboard/inventory": {
+    title: "Inventory",
+    subtitle: "Track stock and low inventory",
+  },
+};
 
 export default function AdminDashboardShell({
   children,
@@ -29,6 +43,7 @@ export default function AdminDashboardShell({
 }) {
   const pathname = usePathname();
   const [isMobileNavigationOpen, setIsMobileNavigationOpen] = useState(false);
+  const heading = pageHeadings[pathname] ?? pageHeadings["/dashboard"];
 
   function closeNavigation() {
     setIsMobileNavigationOpen(false);
@@ -87,7 +102,10 @@ export default function AdminDashboardShell({
           <ul className="space-y-1">
             {navigation.map(({ label, href, icon: Icon }) => {
               const isActive =
-                label === "Dashboard" && pathname === "/dashboard";
+                (label === "Dashboard" && pathname === "/dashboard") ||
+                (label === "Products" && pathname === "/dashboard/products") ||
+                (label === "Inventory" &&
+                  pathname === "/dashboard/inventory");
 
               return (
                 <li key={label}>
@@ -151,10 +169,10 @@ export default function AdminDashboardShell({
             </button>
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold sm:text-base">
-                Dashboard
+                {heading.title}
               </p>
               <p className="hidden text-xs text-text-secondary sm:block">
-                Store overview
+                {heading.subtitle}
               </p>
             </div>
           </div>

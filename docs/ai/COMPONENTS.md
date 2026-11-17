@@ -19,11 +19,14 @@
 | Component | Location | Responsibility |
 |---|---|---|
 | `AdminDashboardShell` | `src/components/admin/AdminDashboardShell.tsx` | Responsive admin sidebar and header with mobile navigation and theme control. |
-| `AdminDashboard` | `src/components/admin/AdminDashboard.tsx` | Derives revenue, order, customer, product, monthly-revenue, and category summaries from browser-local orders and the local catalog. |
+| `AdminDashboard` | `src/components/admin/AdminDashboard.tsx` | Derives revenue, order, customer, monthly-revenue, and category summaries from browser-local orders and product count from the shared admin catalog. |
 | `DashboardStatCard` | `src/components/admin/DashboardStatCard.tsx` | Reusable label/value/description KPI card with an icon. |
 | `RevenueChart` | `src/components/admin/RevenueChart.tsx` | Accessible responsive chart for monthly local order totals. |
 | `TopCategoriesPanel` | `src/components/admin/TopCategoriesPanel.tsx` | Reusable category revenue summary with responsive progress indicators. |
 | `RecentOrdersTable` | `src/components/admin/RecentOrdersTable.tsx` | Searchable responsive table of orders saved in this browser. |
+| `AdminProductsPage`, `AdminInventoryPage` | `src/components/admin/` | Product and inventory demo pages with filters, tables, pagination, and local product/stock actions. |
+| `AdminProductEditorDialog` | `src/components/admin/AdminProductEditorDialog.tsx` | Shared local add/edit form for product details and inventory threshold. |
+| Admin product store | `src/components/admin/adminProductsStore.ts` | Shared browser-local sample catalog, stock state, and cross-tab subscription for admin pages. It is not connected to storefront or server data. |
 
 ## Authentication components
 

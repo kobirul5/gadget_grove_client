@@ -1,5 +1,11 @@
 # Task Log
 
+## 2026-11-18 — Adding admin product and inventory pages
+
+- Added `/dashboard/products` and `/dashboard/inventory` with responsive tables, summary cards, filters, pagination, stock alerts, CSV export, and reusable product editing.
+- Added a shared browser-local admin catalog/inventory store so product and stock edits stay consistent across the dashboard pages and browser tabs.
+- Documented that sample stock and product-management actions are demo-only and do not update the storefront catalog or a server.
+
 ## 2026-11-18 — Building the admin dashboard
 
 - Replaced the empty `/dashboard` placeholder with a responsive admin workspace and reusable navigation, KPI, revenue chart, category panel, and recent orders components.
