@@ -14,7 +14,8 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Responsive Gadget Grove storefront structured around the supplied home-page reference, with hero, service strip, category icons, static product collections, promotional banners, flash-sale cards, trending list, and brand product section.
 - A shared responsive product details page at `/products/[slug]`, with a route generated for every distinct local storefront sample product. Product cards and trending rows link to their matching slug. The HP Pavilion has additional sample images and specifications; other products show their available listing data and neutral generic details.
 - A reusable `/products` listing for all products, navigation categories, subcategories, and home-page category links. Category-aware filters, multi-value selections, price sorting, newest/popularity sorting, result counts, pagination, and clear-filter actions are synchronized with URL query parameters and run against the local sample catalog.
-- A `/cart` page showing saved products, quantities, line totals, and subtotal, with controls to change quantities or remove items. Cart edits persist only in browser `localStorage`; checkout is not implemented.
+- A `/cart` page showing saved products, quantities, line totals, and subtotal, with controls to change quantities or remove items.
+- Guest `/checkout` flow for placing the whole cart order or going directly from a product's Buy Now action with its selected quantity. Checkout collects contact and delivery details, supports cash on delivery, saves a local demo order, and displays its `/order-confirmation` page.
 - Home page sections implemented as separate components under `src/components/home/`.
 - Branded global footer with links to existing frontend routes and home-page sections.
 
@@ -23,6 +24,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Home page product names, prices, ratings, counts, and service claims are static presentation samples and are not backed by a product API.
 - Product imagery, specifications, ratings, and related-product listings are static samples, not backed by a product API.
 - Cart additions and edits persist product slugs and quantities in browser `localStorage` and appear in the shared Navbar cart panel and `/cart`; they are not synced to an account or server.
+- Checkout orders and customer delivery details are saved only in browser `localStorage`. No order reaches the store, and payment, shipping fees, and fulfillment are not connected.
 - Favorites and compare remain frontend-only UI and do not persist.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
 - `/account` and `/dashboard` render `null`.
@@ -31,7 +33,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 
 ## Not found in the inspected frontend
 
-- Server-backed product catalog, cart, checkout, or order history.
+- Server-backed product catalog, cart, checkout, order history, payment, or fulfillment.
 - Functional login, registration, OTP verification, password recovery, authentication state, or account management.
 - Admin dashboard functionality or role/permission UI.
 - Frontend API integration, request/error/loading handling, or data-fetching state.

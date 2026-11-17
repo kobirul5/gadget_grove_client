@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeftRight,
   ChevronDown,
@@ -154,6 +155,7 @@ const hpSpecificationGroups: SpecificationGroup[] = [
 type ProductTab = "Specification" | "Description" | "Warranty";
 
 export default function ProductDetailPage({ product }: { product: Product }) {
+  const router = useRouter();
   const isHpPavilion = getProductSlug(product) === "hp-pavilion-16";
   const productImages = [
     { src: product.image, alt: product.name },
@@ -197,6 +199,14 @@ export default function ProductDetailPage({ product }: { product: Product }) {
         ? `${quantity} ${quantity === 1 ? "item" : "items"} added to cart`
         : "Your item could not be saved to the cart.",
     );
+  }
+
+  function buyNow() {
+    const query = new URLSearchParams({
+      product: getProductSlug(product),
+      quantity: String(quantity),
+    });
+    router.push(`/checkout?${query.toString()}`);
   }
 
   const discount =
@@ -404,7 +414,7 @@ export default function ProductDetailPage({ product }: { product: Product }) {
             <div className="mt-5 grid grid-cols-2 gap-3">
               <Button
                 className="h-11 bg-primary text-primary-foreground hover:bg-primary-hover"
-                onClick={addToCart}
+                onClick={buyNow}
                 type="button"
               >
                 Buy Now

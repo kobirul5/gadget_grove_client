@@ -39,6 +39,7 @@ type CartContextValue = {
   addItem: (product: Product, quantity: number) => boolean;
   updateQuantity: (productSlug: string, quantity: number) => boolean;
   removeItem: (productSlug: string) => boolean;
+  clearCart: () => boolean;
 };
 
 const emptySnapshot: CartSnapshot = {
@@ -243,6 +244,18 @@ function removeItem(productSlug: string) {
   return saveItems(nextItems);
 }
 
+function clearCart() {
+  if (!snapshot.isHydrated) {
+    updateSnapshot({
+      ...snapshot,
+      storageError: "Your cart is not ready. Please try again.",
+    });
+    return false;
+  }
+
+  return saveItems([]);
+}
+
 export function CartProvider({ children }: { children: ReactNode }) {
   const cart = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const itemCount = cart.items.reduce((total, item) => total + item.quantity, 0);
@@ -255,6 +268,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       addItem,
       updateQuantity,
       removeItem,
+      clearCart,
     }),
     [cart.items, cart.isHydrated, cart.storageError, itemCount],
   );

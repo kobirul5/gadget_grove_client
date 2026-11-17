@@ -1,5 +1,16 @@
 # Task Log
 
+## 2026-11-18 — Showing an order success modal
+
+- Opened a themed, accessible success dialog after saving a checkout order.
+- Added links from the dialog to the full confirmation page and a close action with an inline confirmation link.
+
+## 2026-11-18 — Adding guest checkout and demo order confirmation
+
+- Added checkout from the cart and direct Buy Now checkout for one selected product and quantity.
+- Added guest delivery/contact form, cash-on-delivery display, local demo-order storage, cart clearing after cart checkout, and an order confirmation page.
+- Documented that orders and customer details remain in this browser and are not submitted to a store or fulfillment service.
+
 ## 2026-11-18 — Adding the shopping cart page
 
 - Added `/cart` to show saved products, quantities, line totals, and subtotal, with controls to update quantities or remove items.

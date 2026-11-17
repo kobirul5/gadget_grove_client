@@ -195,8 +195,14 @@ export default function CartPage() {
                 </span>
               </div>
               <p className="mt-4 border-t border-border pt-4 text-xs leading-5 text-text-secondary">
-                Shipping and payment are not available yet.
+                Add your delivery details and choose cash on delivery at checkout.
               </p>
+              <Link
+                className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                href="/checkout"
+              >
+                Proceed to checkout
+              </Link>
             </aside>
           </div>
         )}
