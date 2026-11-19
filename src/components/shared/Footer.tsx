@@ -1,8 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
-  Headphones,
   ShieldCheck,
   Truck,
 } from "lucide-react";
@@ -30,9 +30,13 @@ export default function Footer() {
               className="group inline-flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               href="/"
             >
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                <Headphones aria-hidden="true" className="size-5" />
-              </span>
+              <Image
+                alt=""
+                className="size-11 rounded-xl bg-surface p-1 object-contain ring-1 ring-border"
+                height={1280}
+                src="/logo.png"
+                width={1280}
+              />
               <span className="text-xl font-semibold tracking-tight">
                 Gadget <span className="text-primary">Grove</span>
               </span>
