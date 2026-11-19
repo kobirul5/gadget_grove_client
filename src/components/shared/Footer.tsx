@@ -91,7 +91,12 @@ export default function Footer() {
             <ul className="mt-4 space-y-4">
               <li className="flex items-center gap-3 text-sm text-footer-foreground/65">
                 <Truck aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                Careful delivery
+                <Link
+                  className="transition-colors hover:text-footer-foreground focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  href="/delivery"
+                >
+                  Careful delivery
+                </Link>
               </li>
               <li className="flex items-center gap-3 text-sm text-footer-foreground/65">
                 <ShieldCheck aria-hidden="true" className="size-4 shrink-0 text-primary" />

@@ -1,5 +1,10 @@
 # Task Log
 
+## 2026-11-19 — Adding the careful delivery page
+
+- Added `/delivery` as a responsive storefront page describing packing, delivery tracking context, and cash-on-delivery arrival.
+- Linked “Careful delivery” in the shared footer to the new route.
+
 ## 2026-11-18 — Adding admin product and inventory pages
 
 - Added `/dashboard/products` and `/dashboard/inventory` with responsive tables, summary cards, filters, pagination, stock alerts, CSV export, and reusable product editing.
