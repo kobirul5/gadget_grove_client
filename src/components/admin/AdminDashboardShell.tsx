@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import {
@@ -75,9 +76,13 @@ export default function AdminDashboardShell({
             href="/dashboard"
             onClick={closeNavigation}
           >
-            <span className="grid size-9 place-items-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-              G
-            </span>
+            <Image
+              alt=""
+              className="size-9 rounded-xl bg-surface p-0.5 object-contain ring-1 ring-border"
+              height={1280}
+              src="/logo.png"
+              width={1280}
+            />
             <span>
               Gadget <span className="text-primary">Grove</span>
             </span>
