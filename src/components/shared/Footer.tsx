@@ -109,7 +109,12 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-footer-foreground/65">
                 <BadgeCheck aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                Here to help
+                <Link
+                  className="transition-colors hover:text-footer-foreground focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  href="/help"
+                >
+                  Here to help
+                </Link>
               </li>
             </ul>
           </div>

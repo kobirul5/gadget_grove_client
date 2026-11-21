@@ -1,5 +1,11 @@
 # Task Log
 
+## 2026-11-21 — Adding the help page
+
+- Added `/help` with product, delivery, cart, and warranty guidance plus common questions.
+- Linked “Here to help” in the shared footer to the new route.
+- Clarified that checkout orders are browser-local demos and are not received or fulfilled by the store.
+
 ## 2026-11-21 — Adding the genuine products page
 
 - Added `/genuine-products` as a responsive storefront guide to checking product details, packaging, invoices, and warranty terms.
