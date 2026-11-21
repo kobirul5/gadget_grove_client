@@ -18,7 +18,7 @@ The application uses the Next.js App Router. Parenthesized route groups organize
 | `/forgot-password` | `src/app/(auth)/forgot-password/page.tsx` | Recovery form navigates to `/verify-otp` with the entered email and password-reset flow. |
 | `/verify-otp` | `src/app/(auth)/verify-otp/page.tsx` | Six-digit code form displays the supplied email; Continue navigates to login for signup or reset-password for recovery. |
 | `/reset-password` | `src/app/(auth)/reset-password/page.tsx` | New password form checks confirmation and navigates to login. |
-| `/account` | `src/app/(user)/account/page.tsx` | Placeholder that returns `null`. |
+| `/account` | `src/app/(user)/account/page.tsx` | Account landing page with sign-in/registration links, shopping shortcuts, and a notice that authentication and orders are not server-connected. |
 | `/dashboard` | `src/app/(admin)/dashboard/page.tsx` | Responsive admin shell with reusable sidebar, KPI cards, recent-order search/table, six-month revenue chart, and top categories. Orders and revenue are derived from browser-local demo orders; product count comes from the local sample catalog. |
 | `/dashboard/products` | `src/app/(admin)/dashboard/products/page.tsx` | Product management demo with search/category/stock filters, sorting, pagination, CSV export, and browser-local add/edit/delete and publish-status controls. Changes do not update the storefront or a server. |
 | `/dashboard/inventory` | `src/app/(admin)/dashboard/inventory/page.tsx` | Sample inventory summary, low-stock alerts, filters, pagination, and browser-local stock adjustment. Seed quantities and changes are not server-synced. |

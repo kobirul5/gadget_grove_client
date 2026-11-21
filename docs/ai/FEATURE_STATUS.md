@@ -30,7 +30,7 @@ Status reflects the frontend source inspected for this documentation setup. A ro
 - Checkout orders and customer delivery details are saved only in browser `localStorage`. No order reaches the store, and payment, shipping fees, and fulfillment are not connected.
 - Favorites and compare remain frontend-only UI and do not persist.
 - Authentication does not connect to a backend: demo routes do not create accounts, deliver/verify codes, or change passwords; login remains disabled.
-- `/account` renders `null`.
+- `/account` is an account landing page with links to sign-in, registration, shopping, cart, and help; it explains that authentication and orders are not server-connected.
 - Admin dashboard is not authenticated/role-protected. Product management, publish switches, and inventory changes are browser-local demos; they do not update the storefront catalog or a server. Order status and orders saved in other browsers remain unavailable.
 - Root layout metadata uses Gadget Grove branding.
 

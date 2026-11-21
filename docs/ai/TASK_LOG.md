@@ -1,5 +1,10 @@
 # Task Log
 
+## 2026-11-21 — Adding the account landing page
+
+- Replaced the empty `/account` route with a responsive account page, sign-in and registration links, and shopping shortcuts.
+- Clarified that authentication is a preview and cart/order details are not server-connected.
+
 ## 2026-11-21 — Adding the help page
 
 - Added `/help` with product, delivery, cart, and warranty guidance plus common questions.
