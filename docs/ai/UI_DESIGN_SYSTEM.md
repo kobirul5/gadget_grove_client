@@ -81,6 +81,7 @@ The root declares `color-scheme: light`, `.dark` declares `color-scheme: dark`, 
 - Light theme: white background. Dark theme: surface background.
 - Use the theme border token for dividers and borders.
 - Keep the logo and brand recognizable in both themes.
+- Always use the existing brand asset at `public/logo.png` wherever the Gadget Grove logo is needed; do not replace it with an invented logo, lettermark, or decorative icon.
 - Place the brand logo on the theme surface with a theme border; preserve the logo image colors.
 - Active navigation uses the primary token.
 - The shared Navbar uses the global background, border, primary, and text tokens and links to the implemented storefront sections.

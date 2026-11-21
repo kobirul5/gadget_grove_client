@@ -100,7 +100,12 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-footer-foreground/65">
                 <ShieldCheck aria-hidden="true" className="size-4 shrink-0 text-primary" />
-                Genuine products
+                <Link
+                  className="transition-colors hover:text-footer-foreground focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  href="/genuine-products"
+                >
+                  Genuine products
+                </Link>
               </li>
               <li className="flex items-center gap-3 text-sm text-footer-foreground/65">
                 <BadgeCheck aria-hidden="true" className="size-4 shrink-0 text-primary" />

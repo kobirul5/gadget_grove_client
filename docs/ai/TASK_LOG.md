@@ -1,5 +1,11 @@
 # Task Log
 
+## 2026-11-21 — Adding the genuine products page
+
+- Added `/genuine-products` as a responsive storefront guide to checking product details, packaging, invoices, and warranty terms.
+- Linked “Genuine products” in the shared footer to the new route.
+- Used existing theme tokens and sample catalog imagery; product-specific sourcing and warranty claims remain unasserted.
+
 ## 2026-11-19 — Adding the careful delivery page
 
 - Added `/delivery` as a responsive storefront page describing packing, delivery tracking context, and cash-on-delivery arrival.
